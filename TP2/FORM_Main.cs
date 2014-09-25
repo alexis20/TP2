@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace TP2
 {
-    public partial class Form1 : Form
+    public partial class FORM_Main : Form
     {
-        public Form1()
+        public FORM_Main()
         {
             InitializeComponent();
+        }
+
+        private void TB_RECHERCHE_Fournisseur_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DGV_Inventaire_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

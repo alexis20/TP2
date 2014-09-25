@@ -38,16 +38,16 @@
             this.TSMI_Fichier = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_Connexion = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_Deconnexion = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.TSMI_Quitter = new System.Windows.Forms.ToolStripMenuItem();
             this.TB_RECHERCHE_Fournisseur = new System.Windows.Forms.TextBox();
             this.LBL_RECHERCHE_Inventaire = new System.Windows.Forms.Label();
             this.TB_RECHERCHE_Inventaire = new System.Windows.Forms.TextBox();
             this.GB_FOURNISSEUR = new System.Windows.Forms.GroupBox();
             this.GB_INVENTAIRE = new System.Windows.Forms.GroupBox();
-            this.BTN_AJTER_Inventaire = new System.Windows.Forms.Button();
-            this.BTN_MODIF_Inventaire = new System.Windows.Forms.Button();
             this.BTN_SUP_Inventaire = new System.Windows.Forms.Button();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.BTN_MODIF_Inventaire = new System.Windows.Forms.Button();
+            this.BTN_AJTER_Inventaire = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.GDV_Fournisseur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Inventaire)).BeginInit();
             this.MS_Menu.SuspendLayout();
@@ -141,6 +141,11 @@
             this.TSMI_Deconnexion.Size = new System.Drawing.Size(152, 22);
             this.TSMI_Deconnexion.Text = "Déconnexion";
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            // 
             // TSMI_Quitter
             // 
             this.TSMI_Quitter.Name = "TSMI_Quitter";
@@ -201,14 +206,14 @@
             this.GB_INVENTAIRE.TabStop = false;
             this.GB_INVENTAIRE.Text = "INVENTAIRE";
             // 
-            // BTN_AJTER_Inventaire
+            // BTN_SUP_Inventaire
             // 
-            this.BTN_AJTER_Inventaire.Location = new System.Drawing.Point(6, 277);
-            this.BTN_AJTER_Inventaire.Name = "BTN_AJTER_Inventaire";
-            this.BTN_AJTER_Inventaire.Size = new System.Drawing.Size(111, 23);
-            this.BTN_AJTER_Inventaire.TabIndex = 10;
-            this.BTN_AJTER_Inventaire.Text = "Ajouter";
-            this.BTN_AJTER_Inventaire.UseVisualStyleBackColor = true;
+            this.BTN_SUP_Inventaire.Location = new System.Drawing.Point(240, 277);
+            this.BTN_SUP_Inventaire.Name = "BTN_SUP_Inventaire";
+            this.BTN_SUP_Inventaire.Size = new System.Drawing.Size(111, 23);
+            this.BTN_SUP_Inventaire.TabIndex = 12;
+            this.BTN_SUP_Inventaire.Text = "Supprimer";
+            this.BTN_SUP_Inventaire.UseVisualStyleBackColor = true;
             // 
             // BTN_MODIF_Inventaire
             // 
@@ -219,19 +224,14 @@
             this.BTN_MODIF_Inventaire.Text = "Modifier";
             this.BTN_MODIF_Inventaire.UseVisualStyleBackColor = true;
             // 
-            // BTN_SUP_Inventaire
+            // BTN_AJTER_Inventaire
             // 
-            this.BTN_SUP_Inventaire.Location = new System.Drawing.Point(240, 277);
-            this.BTN_SUP_Inventaire.Name = "BTN_SUP_Inventaire";
-            this.BTN_SUP_Inventaire.Size = new System.Drawing.Size(111, 23);
-            this.BTN_SUP_Inventaire.TabIndex = 12;
-            this.BTN_SUP_Inventaire.Text = "Supprimer";
-            this.BTN_SUP_Inventaire.UseVisualStyleBackColor = true;
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.BTN_AJTER_Inventaire.Location = new System.Drawing.Point(6, 277);
+            this.BTN_AJTER_Inventaire.Name = "BTN_AJTER_Inventaire";
+            this.BTN_AJTER_Inventaire.Size = new System.Drawing.Size(111, 23);
+            this.BTN_AJTER_Inventaire.TabIndex = 10;
+            this.BTN_AJTER_Inventaire.Text = "Ajouter";
+            this.BTN_AJTER_Inventaire.UseVisualStyleBackColor = true;
             // 
             // FORM_Main
             // 

@@ -36,7 +36,6 @@
             this.LBL_RECHERCHE_Fournisseur = new System.Windows.Forms.Label();
             this.MS_Menu = new System.Windows.Forms.MenuStrip();
             this.TSMI_Fichier = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMI_Connexion = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_Deconnexion = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.TSMI_Quitter = new System.Windows.Forms.ToolStripMenuItem();
@@ -121,19 +120,12 @@
             // TSMI_Fichier
             // 
             this.TSMI_Fichier.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TSMI_Connexion,
             this.TSMI_Deconnexion,
             this.toolStripSeparator1,
             this.TSMI_Quitter});
             this.TSMI_Fichier.Name = "TSMI_Fichier";
             this.TSMI_Fichier.Size = new System.Drawing.Size(54, 20);
             this.TSMI_Fichier.Text = "Fichier";
-            // 
-            // TSMI_Connexion
-            // 
-            this.TSMI_Connexion.Name = "TSMI_Connexion";
-            this.TSMI_Connexion.Size = new System.Drawing.Size(152, 22);
-            this.TSMI_Connexion.Text = "Connexion";
             // 
             // TSMI_Deconnexion
             // 
@@ -267,7 +259,6 @@
         private System.Windows.Forms.Label LBL_RECHERCHE_Fournisseur;
         private System.Windows.Forms.MenuStrip MS_Menu;
         private System.Windows.Forms.ToolStripMenuItem TSMI_Fichier;
-        private System.Windows.Forms.ToolStripMenuItem TSMI_Connexion;
         private System.Windows.Forms.ToolStripMenuItem TSMI_Deconnexion;
         private System.Windows.Forms.ToolStripMenuItem TSMI_Quitter;
         private System.Windows.Forms.TextBox TB_RECHERCHE_Fournisseur;

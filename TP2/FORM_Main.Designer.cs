@@ -79,6 +79,7 @@
             this.BTN_AJTER_Fournisseur.TabIndex = 2;
             this.BTN_AJTER_Fournisseur.Text = "Ajouter";
             this.BTN_AJTER_Fournisseur.UseVisualStyleBackColor = true;
+            this.BTN_AJTER_Fournisseur.Click += new System.EventHandler(this.BTN_AJTER_Fournisseur_Click);
             // 
             // BTN_MODIF_Fournisseur
             // 
@@ -236,6 +237,7 @@
             this.MainMenuStrip = this.MS_Menu;
             this.Name = "FORM_Main";
             this.Text = "Àmoé";
+            this.Load += new System.EventHandler(this.FORM_Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.GDV_Fournisseur)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Inventaire)).EndInit();
             this.MS_Menu.ResumeLayout(false);

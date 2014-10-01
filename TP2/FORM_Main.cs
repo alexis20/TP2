@@ -39,11 +39,6 @@ namespace TP2
             ReloadDGVInventaire();
         }
 
-        private void UpdateControls()
-        {
-
-        }
-
         private void Connection()
         {
             String connexionChaine;

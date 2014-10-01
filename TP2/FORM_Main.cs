@@ -15,7 +15,7 @@ namespace TP2
     {
         SqlConnection conn = null;
         DataSet FournisseurDataSet = null;
-        DataSet InventaireDataSet = null
+        DataSet InventaireDataSet = null;
 
 
         public FORM_Main()

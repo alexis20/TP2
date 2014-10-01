@@ -154,7 +154,7 @@ namespace TP2
         private void ReloadDGVInventaire()
         {
             int lastIndex = -1;
-            if (DGV_Inventaire.SelectedRows.Count > 0) lastIndex = DGV_Fournisseur.SelectedRows[0].Index;
+            if (DGV_Inventaire.SelectedRows.Count > 0) lastIndex = DGV_Inventaire.SelectedRows[0].Index;
 
             SqlCommand SqlSelect = conn.CreateCommand();
             SqlSelect.CommandText = "SELECT idinventaire as ID ,descriptioninventaire as DESC,qtestock as QTESTOCK,QteMinimum as QTEMIN,"+ 

@@ -15,6 +15,7 @@ namespace TP2
     {
         SqlConnection conn = null;
         DataSet FournisseurDataSet = null;
+        DataSet InventaireDataSet = null
 
 
         public FORM_Main()
@@ -156,13 +157,13 @@ namespace TP2
             if (DGV_Inventaire.SelectedRows.Count > 0) lastIndex = DGV_Fournisseur.SelectedRows[0].Index;
 
             SqlCommand SqlSelect = conn.CreateCommand();
-            SqlSelect.CommandText = "SELECT idinventaire as ID ,descriptioninventaire as DESC,idfournisseur as IDF,qtestock as QTESTOCK," + 
-                "QteMinimum as QTEMIN,QteMaximum as QTEMAX from Inventaire";
+            SqlSelect.CommandText = "SELECT idinventaire as ID ,descriptioninventaire as DESC,qtestock as QTESTOCK,QteMinimum as QTEMIN,"+ 
+                "QteMaximum as QTEMAX from Inventaire WHERE IDFournisseur=" + DGV_Fournisseur.SelectedRows[0].Cells[0];
 
             SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlSelect);
-            FournisseurDataSet = new DataSet();
-            SqlAdapter.Fill(FournisseurDataSet);
-            DGV_Inventaire.DataSource = FournisseurDataSet.Tables[0];
+            InventaireDataSet = new DataSet();
+            SqlAdapter.Fill(InventaireDataSet);
+            DGV_Inventaire.DataSource = InventaireDataSet.Tables[0];
 
             if (lastIndex > -1 && DGV_Inventaire.Rows.Count > 0) DGV_Inventaire.Rows[Math.Min(lastIndex, DGV_Inventaire.Rows.Count - 1)].Selected = true;
             updateControls();

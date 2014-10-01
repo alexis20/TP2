@@ -113,6 +113,7 @@
             this.TB_Description.Name = "TB_Description";
             this.TB_Description.Size = new System.Drawing.Size(170, 67);
             this.TB_Description.TabIndex = 7;
+            this.TB_Description.TextChanged += new System.EventHandler(this.TB_Description_TextChanged);
             // 
             // TB_QTE_Stock
             // 
@@ -120,6 +121,7 @@
             this.TB_QTE_Stock.Name = "TB_QTE_Stock";
             this.TB_QTE_Stock.Size = new System.Drawing.Size(170, 20);
             this.TB_QTE_Stock.TabIndex = 8;
+            this.TB_QTE_Stock.TextChanged += new System.EventHandler(this.TB_QTE_Stock_TextChanged);
             // 
             // TB_QTE_Minimum
             // 
@@ -127,6 +129,7 @@
             this.TB_QTE_Minimum.Name = "TB_QTE_Minimum";
             this.TB_QTE_Minimum.Size = new System.Drawing.Size(170, 20);
             this.TB_QTE_Minimum.TabIndex = 9;
+            this.TB_QTE_Minimum.TextChanged += new System.EventHandler(this.TB_QTE_Minimum_TextChanged);
             // 
             // TB_QTE_Maximum
             // 
@@ -134,6 +137,7 @@
             this.TB_QTE_Maximum.Name = "TB_QTE_Maximum";
             this.TB_QTE_Maximum.Size = new System.Drawing.Size(170, 20);
             this.TB_QTE_Maximum.TabIndex = 10;
+            this.TB_QTE_Maximum.TextChanged += new System.EventHandler(this.TB_QTE_Maximum_TextChanged);
             // 
             // CB_ID_Fournisseur
             // 
@@ -142,17 +146,18 @@
             this.CB_ID_Fournisseur.Name = "CB_ID_Fournisseur";
             this.CB_ID_Fournisseur.Size = new System.Drawing.Size(170, 21);
             this.CB_ID_Fournisseur.TabIndex = 11;
+            this.CB_ID_Fournisseur.SelectedIndexChanged += new System.EventHandler(this.CB_ID_Fournisseur_SelectedIndexChanged);
             // 
             // BTN_OK
             // 
             this.BTN_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.BTN_OK.Enabled = false;
             this.BTN_OK.Location = new System.Drawing.Point(140, 240);
             this.BTN_OK.Name = "BTN_OK";
             this.BTN_OK.Size = new System.Drawing.Size(75, 23);
             this.BTN_OK.TabIndex = 12;
             this.BTN_OK.Text = "OK";
             this.BTN_OK.UseVisualStyleBackColor = true;
-            this.BTN_OK.Click += new System.EventHandler(this.BTN_OK_Click);
             // 
             // BTN_Annuler
             // 
@@ -166,8 +171,10 @@
             // 
             // FORM_Inventaire
             // 
+            this.AcceptButton = this.BTN_OK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.BTN_Annuler;
             this.ClientSize = new System.Drawing.Size(318, 275);
             this.Controls.Add(this.BTN_Annuler);
             this.Controls.Add(this.BTN_OK);
@@ -184,7 +191,6 @@
             this.Controls.Add(this.LBL_Description);
             this.Controls.Add(this.LBL_ID_Inventaire);
             this.Name = "FORM_Inventaire";
-            this.Text = "FORM_Inventaire";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -238,6 +238,7 @@
             this.BTN_MODIF_Inventaire.TabIndex = 11;
             this.BTN_MODIF_Inventaire.Text = "Modifier";
             this.BTN_MODIF_Inventaire.UseVisualStyleBackColor = true;
+            this.BTN_MODIF_Inventaire.Click += new System.EventHandler(this.BTN_MODIF_Inventaire_Click);
             // 
             // BTN_AJTER_Inventaire
             // 
@@ -247,6 +248,7 @@
             this.BTN_AJTER_Inventaire.TabIndex = 10;
             this.BTN_AJTER_Inventaire.Text = "Ajouter";
             this.BTN_AJTER_Inventaire.UseVisualStyleBackColor = true;
+            this.BTN_AJTER_Inventaire.Click += new System.EventHandler(this.BTN_AJTER_Inventaire_Click);
             // 
             // DGV_QTE_Minimum
             // 

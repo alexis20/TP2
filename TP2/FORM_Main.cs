@@ -16,7 +16,6 @@ namespace TP2
         SqlConnection conn = null;
         DataSet FournisseurDataSet = null;
 
-        FORM_Inventaire FI;
 
         public FORM_Main()
         {
@@ -37,7 +36,6 @@ namespace TP2
         {
             Connection();
             ReloadDGV();
-            FI = new FORM_Inventaire();
         }
 
         private void UpdateControls()
@@ -63,9 +61,9 @@ namespace TP2
             }
             if (conn.State.ToString() == "Open")
             {
-            TSMI_Connexion.Enabled = false;
-            TSMI_Deconnexion.Enabled = true;
-        }
+                TSMI_Connexion.Enabled = false;
+                TSMI_Deconnexion.Enabled = true;
+            }
         }
 
         private void BTN_AJTER_Fournisseur_Click(object sender, EventArgs e)
@@ -144,7 +142,7 @@ namespace TP2
             if (DGV_Fournisseur.SelectedRows.Count > 0) lastIndex = DGV_Fournisseur.SelectedRows[0].Index;
 
             SqlCommand SqlSelect = conn.CreateCommand();
-            SqlSelect.CommandText = "SELECT idfournisseur as ID ,nomfournisseur as NOM,adfournisseur as ADRESSE,villefournisseur as VILLE,cpfournisseur as CP,telfournisseur as TEL, " + 
+            SqlSelect.CommandText = "SELECT idfournisseur as ID ,nomfournisseur as NOM,adfournisseur as ADRESSE,villefournisseur as VILLE,cpfournisseur as CP,telfournisseur as TEL, " +
                                         "soldefournisseur as SOLDE,courrielfournisseur as COURRIEL from Fournisseur";
 
             SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlSelect);
@@ -263,6 +261,26 @@ namespace TP2
                     }
                 }
             }
+        }
+
+        private void populerIDFournisseurs(FORM_Inventaire FI)
+        {
+            for (int i = 0; i < DGV_Fournisseur.RowCount; i++)
+                FI.ajouterFournisseurs(DGV_Fournisseur.Rows[i].Cells[0].ToString());
+        }
+
+        private void BTN_AJTER_Inventaire_Click(object sender, EventArgs e)
+        {
+            FORM_Inventaire FI = new FORM_Inventaire();
+            FI.Titre = "Ajout";
+            populerIDFournisseurs(FI);
+        }
+
+        private void BTN_MODIF_Inventaire_Click(object sender, EventArgs e)
+        {
+            FORM_Inventaire FI = new FORM_Inventaire();
+            FI.Titre = "Modification";
+            populerIDFournisseurs(FI);
         }
     }
 }

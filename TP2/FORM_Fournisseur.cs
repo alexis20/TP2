@@ -117,10 +117,5 @@ namespace TP2
         {
             InitializeComponent();
         }
-
-        private void BTN_OK_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

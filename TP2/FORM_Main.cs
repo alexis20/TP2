@@ -281,22 +281,11 @@ namespace TP2
             }
         }
 
-        private void populerIDFournisseurs(FORM_Inventaire FI)
-        {
-            ComboboxItem item = new ComboboxItem();
-            for (int i = 0; i < DGV_Fournisseur.RowCount; i++)
-            {
-                item.Value = DGV_Fournisseur.Rows[i].Cells[0].ToString();
-                item.Text = DGV_Fournisseur.Rows[i].Cells[1].ToString();
-                FI.ajouterFournisseurs(item);
-            }
-        }
-
         private void BTN_AJTER_Inventaire_Click(object sender, EventArgs e)
         {
             FORM_Inventaire FI = new FORM_Inventaire();
             FI.Titre = "Ajout";
-            populerIDFournisseurs(FI);
+            FI.conn = this.conn;
             if (FI.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string sql = "insert into Inventaire (DescriptionInventaire,IDFournisseur,QteStock,QteMinimum,QteMaximum)" +
@@ -338,7 +327,6 @@ namespace TP2
         {
             FORM_Inventaire FI = new FORM_Inventaire();
             FI.Titre = "Modification";
-            populerIDFournisseurs(FI);
             FI.ID = (int)DGV_Inventaire.SelectedRows[0].Cells[0].Value;
             FI.Description = DGV_Inventaire.SelectedRows[0].Cells[1].Value.ToString();
             FI.IDFournisseur = (int)DGV_Inventaire.SelectedRows[0].Cells[2].Value;
@@ -407,17 +395,6 @@ namespace TP2
                     MessageBox.Show(ex.ToString());
                 }
             }
-        }
-    }
-
-    public class ComboboxItem
-    {
-        public string Text { get; set; }
-        public object Value { get; set; }
-
-        public override string ToString()
-        {
-            return Text;
         }
     }
 }

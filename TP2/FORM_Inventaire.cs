@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace TP2
 {
     public partial class FORM_Inventaire : Form
     {
+        public SqlConnection conn = null;
         public string Titre
         {
             get
@@ -99,7 +101,7 @@ namespace TP2
 
         void updateControls()
         {
-            if (Description != "" && IDFournisseur != -1 && QteStock != null && QteMinimum != null && QteMaximum != null)
+            if (Description != "" && IDFournisseur != -1 && QteStock != -1 && QteMinimum != -1 && QteMaximum != -1)
                 BTN_OK.Enabled = true;
             else
                 BTN_OK.Enabled = false;
@@ -130,9 +132,21 @@ namespace TP2
             updateControls();
         }
 
-        public void ajouterFournisseurs(ComboboxItem value)
+        public FORM_Inventaire()
         {
-            CB_ID_Fournisseur.Items.Add(value.ToString());
+            InitializeComponent();
+        }
+        private void FORM_Inventaire_Load(object sender, EventArgs e)
+        {
+            SqlCommand SqlSelect = conn.CreateCommand();
+            SqlSelect.CommandText = "SELECT idfournisseur,nomfournisseur FROM fournisseur";
+            using (SqlDataReader SqlReader = SqlSelect.ExecuteReader())
+            {
+                while (SqlReader.Read())
+                {
+                    CB_ID_Fournisseur.Items.Add(SqlReader.GetInt32(0).ToString() + " - " + SqlReader.GetString(1));
+                }
+            }
         }
     }
 }

@@ -229,6 +229,7 @@
             this.BTN_SUP_Inventaire.TabIndex = 12;
             this.BTN_SUP_Inventaire.Text = "Supprimer";
             this.BTN_SUP_Inventaire.UseVisualStyleBackColor = true;
+            this.BTN_SUP_Inventaire.Click += new System.EventHandler(this.BTN_SUP_Inventaire_Click);
             // 
             // BTN_MODIF_Inventaire
             // 

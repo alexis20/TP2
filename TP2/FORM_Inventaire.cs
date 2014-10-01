@@ -52,7 +52,8 @@ namespace TP2
         {
             get
             {
-                return Int32.Parse(CB_ID_Fournisseur.Text);
+                string[] TAB_Num = CB_ID_Fournisseur.Text.Split('-');
+                return Int32.Parse(TAB_Num[0].Trim());
             }
             set
             {

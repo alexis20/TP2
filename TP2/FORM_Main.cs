@@ -154,6 +154,24 @@ namespace TP2
             updateControls();
         }
 
+        private void ReloadDGVInventaire()
+        {
+            int lastIndex = -1;
+            if (DGV_Inventaire.SelectedRows.Count > 0) lastIndex = DGV_Fournisseur.SelectedRows[0].Index;
+
+            SqlCommand SqlSelect = conn.CreateCommand();
+            SqlSelect.CommandText = "SELECT idinventaire as ID ,descriptioninventaire as DESC,idfournisseur as IDF,qtestock as QTESTOCK," + 
+                "QteMinimum as QTEMIN,QteMaximum as QTEMAX from Inventaire";
+
+            SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlSelect);
+            FournisseurDataSet = new DataSet();
+            SqlAdapter.Fill(FournisseurDataSet);
+            DGV_Inventaire.DataSource = FournisseurDataSet.Tables[0];
+
+            if (lastIndex > -1 && DGV_Inventaire.Rows.Count > 0) DGV_Inventaire.Rows[Math.Min(lastIndex, DGV_Inventaire.Rows.Count - 1)].Selected = true;
+            updateControls();
+        }
+
         private void updateControls()
         {
             if (DGV_Fournisseur.RowCount > 0)
@@ -234,7 +252,7 @@ namespace TP2
 
                     sqlmodifier.ExecuteNonQuery();
 
-                    ReloadDGV();
+                    ReloadDGVFournisseur();
                 }
                 catch (SqlException ex)
                 {
@@ -261,10 +279,7 @@ namespace TP2
                 }
                 catch (SqlException ex)
                 {
-                    if (ex.Number == 2292)
-                    {
-                        MessageBox.Show("La division ne doit pas contenir d'équipe.", "Erreur 2292", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -331,42 +346,65 @@ namespace TP2
 
             if (FI.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                string sql = "UPDATE Fournisseur (NomFournisseur,AdFournisseur,VilleFournisseur,CPFournisseur,TelFournisseur,SoldeFournisseur,CourrielFournisseur)" +
-                    " VALUES(@NomFournisseur,@AdFournisseur,@VilleFournisseur,@CPFournisseur,@TelFournisseur,@SoldeFournisseur,@CourrielFournisseur)";
+                string sql = "update inventaire set DescriptionInventaire = @DescriptionInventaire, IDFournisseur = @IDFournisseur," +
+                    "QteStock = @QteStock, QteMinimum = @QteMinimum, QteMaximum = @QteMaximum where IDInventaire = @IDInventaire";
                 try
                 {
-                    SqlCommand sqlAjout = new SqlCommand(sql, conn);
+                    SqlCommand sqlModifier = new SqlCommand(sql, conn);
 
-                    SqlParameter SQLParaNom = new SqlParameter("@NomFournisseur", SqlDbType.VarChar, 50);
-                    SqlParameter SQLParamad = new SqlParameter("@AdFournisseur", SqlDbType.VarChar, 50);
-                    SqlParameter SQLParamVille = new SqlParameter("@VilleFournisseur", SqlDbType.VarChar, 50);  //Ajout
-                    SqlParameter SQLParamCP = new SqlParameter("@CPFournisseur", SqlDbType.VarChar, 50);
-                    SqlParameter SQLParamTel = new SqlParameter("@TelFournisseur", SqlDbType.VarChar, 50);
-                    SqlParameter SQLParamSolde = new SqlParameter("@SoldeFournisseur", SqlDbType.Int, 6);
-                    SqlParameter SQLParamCourriel = new SqlParameter("@CourrielFournisseur", SqlDbType.VarChar, 50);
+                    SqlParameter SQLParaDesc = new SqlParameter("@DescriptionInventaire", SqlDbType.VarChar, 50);
+                    SqlParameter SQLParamIDF = new SqlParameter("@IDFournisseur", SqlDbType.Int);
+                    SqlParameter SQLParamStock = new SqlParameter("@QteStock", SqlDbType.Int);
+                    SqlParameter SQLParamMin = new SqlParameter("@QteMinimum", SqlDbType.Int);
+                    SqlParameter SQLParamMax = new SqlParameter("@QteMaximum", SqlDbType.Int);
+                    SqlParameter SQLParamID = new SqlParameter("@IDInventaire", SqlDbType.Int, 10);
 
-                    SQLParaNom.Value = FF.Nom;
-                    SQLParamad.Value = FF.Adresse;
-                    SQLParamVille.Value = FF.Ville;
-                    SQLParamCP.Value = FF.CodePostal;
-                    SQLParamTel.Value = FF.Telephone;
-                    SQLParamSolde.Value = FF.Solde;
-                    SQLParamCourriel.Value = FF.Courriel;
+                    SQLParaDesc.Value = FI.Description;
+                    SQLParamIDF.Value = FI.IDFournisseur;
+                    SQLParamStock.Value = FI.QteStock;
+                    SQLParamMin.Value = FI.QteMinimum;
+                    SQLParamMax.Value = FI.QteMaximum;
+                    SQLParamID.Value = FI.ID;
 
-                    sqlAjout.Parameters.Add(SQLParaNom);
-                    sqlAjout.Parameters.Add(SQLParamad);
-                    sqlAjout.Parameters.Add(SQLParamVille);
-                    sqlAjout.Parameters.Add(SQLParamCP);
-                    sqlAjout.Parameters.Add(SQLParamTel);
-                    sqlAjout.Parameters.Add(SQLParamSolde);
-                    sqlAjout.Parameters.Add(SQLParamCourriel);
+                    sqlModifier.Parameters.Add(SQLParaDesc);
+                    sqlModifier.Parameters.Add(SQLParamIDF);
+                    sqlModifier.Parameters.Add(SQLParamStock);
+                    sqlModifier.Parameters.Add(SQLParamMin);
+                    sqlModifier.Parameters.Add(SQLParamMax);
+                    sqlModifier.Parameters.Add(SQLParamID);
 
-                    sqlAjout.ExecuteNonQuery();
+                    sqlModifier.ExecuteNonQuery();
+                    
+                    ReloadDGVInventaire();
                 }
                 catch (SqlException ex)
                 {
                     MessageBox.Show(ex.ToString());
                 }
+            }
+        }
+
+        private void BTN_SUP_Inventaire_Click(object sender, EventArgs e)
+        {
+            DialogResult Confirmation = MessageBox.Show("Voulez-vous vraiment effacer cette entrée ?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (Confirmation == System.Windows.Forms.DialogResult.OK)
+            {
+                try
+                {
+                    SqlParameter paramIDInventaire = new SqlParameter("@IDInventaire", SqlDbType.Int, 10);
+                    paramIDInventaire.Value = (int)DGV_Inventaire.SelectedRows[0].Cells[0].Value;
+                    string strDelete = "Delete from Inventaire Where IDInventaire =@IDInventaire";
+                    SqlCommand sqlDelete = new SqlCommand(strDelete, conn);
+
+                    sqlDelete.Parameters.Add(paramIDInventaire);
+                    sqlDelete.ExecuteNonQuery();
+                    ReloadDGVInventaire();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
         }
     }
 }

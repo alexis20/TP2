@@ -157,7 +157,7 @@ namespace TP2
             if (DGV_Inventaire.SelectedRows.Count > 0) lastIndex = DGV_Inventaire.SelectedRows[0].Index;
 
             SqlCommand SqlSelect = conn.CreateCommand();
-            SqlSelect.CommandText = "SELECT idinventaire as ID ,descriptioninventaire as DESC,qtestock as QTESTOCK,QteMinimum as QTEMIN,"+ 
+            SqlSelect.CommandText = "SELECT idinventaire as ID ,descriptioninventaire as DESC,qtestock as QTESTOCK,QteMinimum as QTEMIN," +
                 "QteMaximum as QTEMAX from Inventaire WHERE IDFournisseur=" + DGV_Fournisseur.SelectedRows[0].Cells[0];
 
             SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlSelect);
@@ -214,7 +214,7 @@ namespace TP2
             if (FF.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string sql = "update Fournisseur set NomFournisseur = @NomFournisseur,AdFournisseur=@AdFournisseur," +
-                    "VilleFournisseur=@VilleFournisseur,CPFournisseur= @CPFournisseur,TelFournisseur=@TelFournisseur,"+
+                    "VilleFournisseur=@VilleFournisseur,CPFournisseur= @CPFournisseur,TelFournisseur=@TelFournisseur," +
                     "SoldeFournisseur=@SoldeFournisseur,CourrielFournisseur=@CourrielFournisseur where idfournisseur = @idfournisseur";
                 try
                 {
@@ -283,8 +283,13 @@ namespace TP2
 
         private void populerIDFournisseurs(FORM_Inventaire FI)
         {
+            ComboboxItem item = new ComboboxItem();
             for (int i = 0; i < DGV_Fournisseur.RowCount; i++)
-                FI.ajouterFournisseurs(DGV_Fournisseur.Rows[i].Cells[0].ToString() + " - " + DGV_Fournisseur.Rows[i].Cells[1].ToString());
+            {
+                item.Value = DGV_Fournisseur.Rows[i].Cells[0].ToString();
+                item.Text = DGV_Fournisseur.Rows[i].Cells[1].ToString();
+                FI.ajouterFournisseurs(item);
+            }
         }
 
         private void BTN_AJTER_Inventaire_Click(object sender, EventArgs e)
@@ -371,7 +376,7 @@ namespace TP2
                     sqlModifier.Parameters.Add(SQLParamID);
 
                     sqlModifier.ExecuteNonQuery();
-                    
+
                     ReloadDGVInventaire();
                 }
                 catch (SqlException ex)
@@ -402,6 +407,17 @@ namespace TP2
                     MessageBox.Show(ex.ToString());
                 }
             }
+        }
+    }
+
+    public class ComboboxItem
+    {
+        public string Text { get; set; }
+        public object Value { get; set; }
+
+        public override string ToString()
+        {
+            return Text;
         }
     }
 }

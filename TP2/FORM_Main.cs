@@ -36,6 +36,7 @@ namespace TP2
         {
             Connection();
             ReloadDGVFournisseur();
+            ReloadDGVInventaire();
         }
 
         private void UpdateControls()

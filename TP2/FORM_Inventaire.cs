@@ -99,12 +99,40 @@ namespace TP2
             }
         }
 
-        void updateControls()
+        private void updateControls()
         {
-            if (Description != "" && IDFournisseur != -1 && QteStock != -1 && QteMinimum != -1 && QteMaximum != -1)
+            if (Description != "" && CB_ID_Fournisseur.Text != "" && TB_QTE_Stock.Text != "" && TB_QTE_Minimum.Text != "" && TB_QTE_Maximum.Text != "")
                 BTN_OK.Enabled = true;
             else
                 BTN_OK.Enabled = false;
+        }
+
+        private string buildMessageErreur()
+        {
+            string message = "La quantité";
+            // Minimum
+            if (QteMinimum >= QteMaximum || QteMinimum >= QteStock)
+                message += " minimum";
+            // Stock
+            if (QteStock < QteMinimum || QteStock > QteMaximum)
+            {
+                if (message.Trim().Length == 10)
+                    message += " stock";
+                else
+                    message += ", stock";
+            }
+            // Maximum
+            if (QteMaximum <= QteMinimum || QteMaximum < QteStock)
+            {
+                if (message.Trim().Length == 10)
+                    message += " maximum";
+                else
+                    message += " et maximum";
+            }
+            // Length
+            if (message.Trim().Length == 10)
+                message = "";
+            return message;
         }
 
         private void TB_Description_TextChanged(object sender, EventArgs e)
@@ -147,6 +175,15 @@ namespace TP2
                     CB_ID_Fournisseur.Items.Add(SqlReader.GetInt32(0).ToString() + " - " + SqlReader.GetString(1));
                 }
             }
+        }
+
+        private void BTN_OK_Click(object sender, EventArgs e)
+        {
+            if (buildMessageErreur() == "")
+            {
+                MessageBox.Show(buildMessageErreur());
+                this.DialogResult = DialogResult.None;
+            } 
         }
     }
 }

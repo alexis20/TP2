@@ -200,8 +200,10 @@
             // 
             // FORM_Fournisseur
             // 
+            this.AcceptButton = this.BTN_OK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.BTN_Annuler;
             this.ClientSize = new System.Drawing.Size(303, 270);
             this.Controls.Add(this.BTN_Annuler);
             this.Controls.Add(this.BTN_OK);
@@ -222,6 +224,7 @@
             this.Controls.Add(this.LBL_Nom);
             this.Controls.Add(this.LBL_ID);
             this.Name = "FORM_Fournisseur";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ResumeLayout(false);
             this.PerformLayout();
 

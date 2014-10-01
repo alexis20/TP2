@@ -59,9 +59,16 @@
             // 
             // DGV_Fournisseur
             // 
+            this.DGV_Fournisseur.AllowUserToAddRows = false;
+            this.DGV_Fournisseur.AllowUserToDeleteRows = false;
             this.DGV_Fournisseur.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Fournisseur.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.DGV_Fournisseur.Location = new System.Drawing.Point(6, 39);
+            this.DGV_Fournisseur.MultiSelect = false;
             this.DGV_Fournisseur.Name = "DGV_Fournisseur";
+            this.DGV_Fournisseur.ReadOnly = true;
+            this.DGV_Fournisseur.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGV_Fournisseur.ShowEditingIcon = false;
             this.DGV_Fournisseur.Size = new System.Drawing.Size(345, 232);
             this.DGV_Fournisseur.TabIndex = 0;
             // 
@@ -102,6 +109,7 @@
             this.BTN_SUP_Fournisseur.TabIndex = 4;
             this.BTN_SUP_Fournisseur.Text = "Supprimer";
             this.BTN_SUP_Fournisseur.UseVisualStyleBackColor = true;
+            this.BTN_SUP_Fournisseur.Click += new System.EventHandler(this.BTN_SUP_Fournisseur_Click);
             // 
             // LBL_RECHERCHE_Fournisseur
             // 

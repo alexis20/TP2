@@ -31,7 +31,7 @@ namespace TP2
             }
             set
             {
-                TB_Nom.Text = value.ToString() ;
+                TB_ID.Text = value.ToString() ;
             }
         }
         public string Nom
@@ -64,7 +64,7 @@ namespace TP2
             }
             set
             {
-                TB_Nom.Text = value;
+                TB_Ville.Text = value;
             }
         }
         public string CodePostal

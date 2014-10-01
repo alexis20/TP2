@@ -222,7 +222,6 @@
             this.Controls.Add(this.LBL_Nom);
             this.Controls.Add(this.LBL_ID);
             this.Name = "FORM_Fournisseur";
-            this.Text = "FORM_Fournisseur";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,13 +239,13 @@
         private System.Windows.Forms.Label LBL_Courriel;
         private System.Windows.Forms.Button BTN_OK;
         private System.Windows.Forms.Button BTN_Annuler;
-        public System.Windows.Forms.TextBox TB_Nom;
-        public System.Windows.Forms.TextBox TB_ID;
-        public System.Windows.Forms.TextBox TB_Adresse;
-        public System.Windows.Forms.TextBox TB_Ville;
-        public System.Windows.Forms.TextBox TB_CP;
-        public System.Windows.Forms.TextBox TB_Tel;
-        public System.Windows.Forms.TextBox TB_Solde;
-        public System.Windows.Forms.TextBox TB_Courriel;
+        private System.Windows.Forms.TextBox TB_Nom;
+        private System.Windows.Forms.TextBox TB_ID;
+        private System.Windows.Forms.TextBox TB_Adresse;
+        private System.Windows.Forms.TextBox TB_Ville;
+        private System.Windows.Forms.TextBox TB_CP;
+        private System.Windows.Forms.TextBox TB_Tel;
+        private System.Windows.Forms.TextBox TB_Solde;
+        private System.Windows.Forms.TextBox TB_Courriel;
     }
 }

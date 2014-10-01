@@ -14,7 +14,7 @@ namespace TP2
     public partial class FORM_Main : Form
     {
         SqlConnection conn = null;
-        FORM_Fournisseur FF;
+       
         FORM_Inventaire FI;
 
         public FORM_Main()
@@ -35,7 +35,6 @@ namespace TP2
         private void FORM_Main_Load(object sender, EventArgs e)
         {
             Connection();
-            FF = new FORM_Fournisseur();
             FI = new FORM_Inventaire();
         }
 
@@ -47,7 +46,7 @@ namespace TP2
         private void Connection()
         {
             String connexionChaine;
-            connexionChaine = "Data Source=DAREN511-ASUS\\SQLEXPRESS2012;Initial Catalog=MaNouvelleBd;User ID=MonAutreConnexion;Password=MonAutreConnexion";
+            connexionChaine = "Data Source=DAREN511-ASUS\\SQLEXPRESS2012;Initial Catalog=bdOperation;User ID=conOperation;Password=conOperation";
             conn = new SqlConnection(connexionChaine);
             try
             {
@@ -63,6 +62,8 @@ namespace TP2
 
         private void BTN_AJTER_Fournisseur_Click(object sender, EventArgs e)
         {
+            FORM_Fournisseur FF = new FORM_Fournisseur();
+            FF.Titre = "Ajouter";
             if(FF.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string sql = "insert into Fournisseur (NomFournisseur,AdFournisseur,VilleFournisseur,CPFournisseur,TelFournisseur,SoldeFournisseur,CourrielFournisseur)" +
@@ -79,13 +80,13 @@ namespace TP2
                     SqlParameter SQLParamSolde = new SqlParameter("@SoldeFournisseur", SqlDbType.Int, 6);
                     SqlParameter SQLParamCourriel = new SqlParameter("@CourrielFournisseur", SqlDbType.VarChar, 50);
 
-                    SQLParaNom.Value = FF.TB_Nom.Text;
-                    SQLParamad.Value = FF.TB_Adresse.Text;
-                    SQLParamVille.Value = FF.TB_Ville.Text;
-                    SQLParamCP.Value = FF.TB_CP.Text;
-                    SQLParamTel.Value = FF.TB_Tel.Text;
-                    SQLParamSolde.Value = Int32.Parse(FF.TB_Solde.Text);
-                    SQLParamCourriel.Value = FF.TB_Courriel.Text;
+                    SQLParaNom.Value = FF.Nom;
+                    SQLParamad.Value = FF.Adresse;
+                    SQLParamVille.Value = FF.Ville;
+                    SQLParamCP.Value = FF.CodePostal;
+                    SQLParamTel.Value = FF.Telephone;
+                    SQLParamSolde.Value = FF.Solde;
+                    SQLParamCourriel.Value = FF.Courriel;
 
                     sqlAjout.Parameters.Add(SQLParaNom);
                     sqlAjout.Parameters.Add(SQLParamad);

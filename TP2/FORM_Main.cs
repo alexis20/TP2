@@ -35,7 +35,7 @@ namespace TP2
         private void FORM_Main_Load(object sender, EventArgs e)
         {
             Connection();
-            ReloadDGV();
+            ReloadDGVFournisseur();
         }
 
         private void UpdateControls()
@@ -104,7 +104,7 @@ namespace TP2
 
                     sqlAjout.ExecuteNonQuery();
 
-                    ReloadDGV();
+                    ReloadDGVFournisseur();
                 }
                 catch (SqlException ex)
                 {
@@ -136,7 +136,7 @@ namespace TP2
             conn.Close();
         }
 
-        private void ReloadDGV()
+        private void ReloadDGVFournisseur()
         {
             int lastIndex = -1;
             if (DGV_Fournisseur.SelectedRows.Count > 0) lastIndex = DGV_Fournisseur.SelectedRows[0].Index;
@@ -151,10 +151,10 @@ namespace TP2
             DGV_Fournisseur.DataSource = FournisseurDataSet.Tables[0];
 
             if (lastIndex > -1 && DGV_Fournisseur.Rows.Count > 0) DGV_Fournisseur.Rows[Math.Min(lastIndex, DGV_Fournisseur.Rows.Count - 1)].Selected = true;
-            updateControlsFournisseur();
+            updateControls();
         }
 
-        private void updateControlsFournisseur()
+        private void updateControls()
         {
             if (DGV_Fournisseur.RowCount > 0)
             {
@@ -251,7 +251,7 @@ namespace TP2
 
                     sqlDelete.Parameters.Add(paramNomDivision);
                     sqlDelete.ExecuteNonQuery();
-                    ReloadDGV();
+                    ReloadDGVFournisseur();
                 }
                 catch (SqlException ex)
                 {
@@ -266,7 +266,7 @@ namespace TP2
         private void populerIDFournisseurs(FORM_Inventaire FI)
         {
             for (int i = 0; i < DGV_Fournisseur.RowCount; i++)
-                FI.ajouterFournisseurs(DGV_Fournisseur.Rows[i].Cells[0].ToString());
+                FI.ajouterFournisseurs(DGV_Fournisseur.Rows[i].Cells[0].ToString() + " - " + DGV_Fournisseur.Rows[i].Cells[1].ToString());
         }
 
         private void BTN_AJTER_Inventaire_Click(object sender, EventArgs e)
@@ -274,6 +274,41 @@ namespace TP2
             FORM_Inventaire FI = new FORM_Inventaire();
             FI.Titre = "Ajout";
             populerIDFournisseurs(FI);
+            if (FI.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string sql = "insert into Inventaire (DescriptionInventaire,IDFournisseur,QteStock,QteMinimum,QteMaximum)" +
+                    " VALUES(@DescriptionInventaire,@IDFournisseur,@QteStock,@QteMinimum,@QteMaximum)";
+                try
+                {
+                    SqlCommand sqlAjout = new SqlCommand(sql, conn);
+
+                    SqlParameter SQLParaDesc = new SqlParameter("@DescriptionInventaire", SqlDbType.VarChar, 50);
+                    SqlParameter SQLParamIDF = new SqlParameter("@IDFournisseur", SqlDbType.Int);
+                    SqlParameter SQLParamStock = new SqlParameter("@QteStock", SqlDbType.Int);
+                    SqlParameter SQLParamMin = new SqlParameter("@QteMinimum", SqlDbType.Int);
+                    SqlParameter SQLParamMax = new SqlParameter("@QteMaximum", SqlDbType.Int);
+
+                    SQLParaDesc.Value = FI.Description;
+                    SQLParamIDF.Value = FI.IDFournisseur;
+                    SQLParamStock.Value = FI.QteStock;
+                    SQLParamMin.Value = FI.QteMinimum;
+                    SQLParamMax.Value = FI.QteMaximum;
+
+                    sqlAjout.Parameters.Add(SQLParaDesc);
+                    sqlAjout.Parameters.Add(SQLParamIDF);
+                    sqlAjout.Parameters.Add(SQLParamStock);
+                    sqlAjout.Parameters.Add(SQLParamMin);
+                    sqlAjout.Parameters.Add(SQLParamMax);
+
+                    sqlAjout.ExecuteNonQuery();
+
+                    ReloadDGVFournisseur();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
         }
 
         private void BTN_MODIF_Inventaire_Click(object sender, EventArgs e)
@@ -281,6 +316,51 @@ namespace TP2
             FORM_Inventaire FI = new FORM_Inventaire();
             FI.Titre = "Modification";
             populerIDFournisseurs(FI);
+            FI.ID = (int)DGV_Inventaire.SelectedRows[0].Cells[0].Value;
+            FI.Description = DGV_Inventaire.SelectedRows[0].Cells[1].Value.ToString();
+            FI.IDFournisseur = (int)DGV_Inventaire.SelectedRows[0].Cells[2].Value;
+            FI.QteStock = (int)DGV_Inventaire.SelectedRows[0].Cells[3].Value;
+            FI.QteMinimum = (int)DGV_Inventaire.SelectedRows[0].Cells[4].Value;
+            FI.QteMaximum = (int)DGV_Inventaire.SelectedRows[0].Cells[5].Value;
+
+            if (FI.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string sql = "UPDATE Fournisseur (NomFournisseur,AdFournisseur,VilleFournisseur,CPFournisseur,TelFournisseur,SoldeFournisseur,CourrielFournisseur)" +
+                    " VALUES(@NomFournisseur,@AdFournisseur,@VilleFournisseur,@CPFournisseur,@TelFournisseur,@SoldeFournisseur,@CourrielFournisseur)";
+                try
+                {
+                    SqlCommand sqlAjout = new SqlCommand(sql, conn);
+
+                    SqlParameter SQLParaNom = new SqlParameter("@NomFournisseur", SqlDbType.VarChar, 50);
+                    SqlParameter SQLParamad = new SqlParameter("@AdFournisseur", SqlDbType.VarChar, 50);
+                    SqlParameter SQLParamVille = new SqlParameter("@VilleFournisseur", SqlDbType.VarChar, 50);  //Ajout
+                    SqlParameter SQLParamCP = new SqlParameter("@CPFournisseur", SqlDbType.VarChar, 50);
+                    SqlParameter SQLParamTel = new SqlParameter("@TelFournisseur", SqlDbType.VarChar, 50);
+                    SqlParameter SQLParamSolde = new SqlParameter("@SoldeFournisseur", SqlDbType.Int, 6);
+                    SqlParameter SQLParamCourriel = new SqlParameter("@CourrielFournisseur", SqlDbType.VarChar, 50);
+
+                    SQLParaNom.Value = FF.Nom;
+                    SQLParamad.Value = FF.Adresse;
+                    SQLParamVille.Value = FF.Ville;
+                    SQLParamCP.Value = FF.CodePostal;
+                    SQLParamTel.Value = FF.Telephone;
+                    SQLParamSolde.Value = FF.Solde;
+                    SQLParamCourriel.Value = FF.Courriel;
+
+                    sqlAjout.Parameters.Add(SQLParaNom);
+                    sqlAjout.Parameters.Add(SQLParamad);
+                    sqlAjout.Parameters.Add(SQLParamVille);
+                    sqlAjout.Parameters.Add(SQLParamCP);
+                    sqlAjout.Parameters.Add(SQLParamTel);
+                    sqlAjout.Parameters.Add(SQLParamSolde);
+                    sqlAjout.Parameters.Add(SQLParamCourriel);
+
+                    sqlAjout.ExecuteNonQuery();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
         }
     }
 }

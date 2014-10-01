@@ -36,6 +36,7 @@
             this.LBL_RECHERCHE_Fournisseur = new System.Windows.Forms.Label();
             this.MS_Menu = new System.Windows.Forms.MenuStrip();
             this.TSMI_Fichier = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_Connexion = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_Deconnexion = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.TSMI_Quitter = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,7 +49,6 @@
             this.BTN_MODIF_Inventaire = new System.Windows.Forms.Button();
             this.BTN_AJTER_Inventaire = new System.Windows.Forms.Button();
             this.DGV_QTE_Minimum = new System.Windows.Forms.DataGridView();
-            this.TSMI_Connexion = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Fournisseur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Inventaire)).BeginInit();
             this.MS_Menu.SuspendLayout();
@@ -92,6 +92,7 @@
             this.BTN_MODIF_Fournisseur.TabIndex = 3;
             this.BTN_MODIF_Fournisseur.Text = "Modifier";
             this.BTN_MODIF_Fournisseur.UseVisualStyleBackColor = true;
+            this.BTN_MODIF_Fournisseur.Click += new System.EventHandler(this.BTN_MODIF_Fournisseur_Click);
             // 
             // BTN_SUP_Fournisseur
             // 
@@ -132,22 +133,29 @@
             this.TSMI_Fichier.Size = new System.Drawing.Size(54, 20);
             this.TSMI_Fichier.Text = "Fichier";
             // 
+            // TSMI_Connexion
+            // 
+            this.TSMI_Connexion.Name = "TSMI_Connexion";
+            this.TSMI_Connexion.Size = new System.Drawing.Size(143, 22);
+            this.TSMI_Connexion.Text = "Connexion";
+            this.TSMI_Connexion.Click += new System.EventHandler(this.TSMI_Connexion_Click);
+            // 
             // TSMI_Deconnexion
             // 
             this.TSMI_Deconnexion.Name = "TSMI_Deconnexion";
-            this.TSMI_Deconnexion.Size = new System.Drawing.Size(152, 22);
+            this.TSMI_Deconnexion.Size = new System.Drawing.Size(143, 22);
             this.TSMI_Deconnexion.Text = "Déconnexion";
             this.TSMI_Deconnexion.Click += new System.EventHandler(this.TSMI_Deconnexion_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(140, 6);
             // 
             // TSMI_Quitter
             // 
             this.TSMI_Quitter.Name = "TSMI_Quitter";
-            this.TSMI_Quitter.Size = new System.Drawing.Size(152, 22);
+            this.TSMI_Quitter.Size = new System.Drawing.Size(143, 22);
             this.TSMI_Quitter.Text = "Quitter";
             this.TSMI_Quitter.Click += new System.EventHandler(this.TSMI_Quitter_Click);
             // 
@@ -239,13 +247,6 @@
             this.DGV_QTE_Minimum.Name = "DGV_QTE_Minimum";
             this.DGV_QTE_Minimum.Size = new System.Drawing.Size(726, 112);
             this.DGV_QTE_Minimum.TabIndex = 12;
-            // 
-            // TSMI_Connexion
-            // 
-            this.TSMI_Connexion.Name = "TSMI_Connexion";
-            this.TSMI_Connexion.Size = new System.Drawing.Size(152, 22);
-            this.TSMI_Connexion.Text = "Connexion";
-            this.TSMI_Connexion.Click += new System.EventHandler(this.TSMI_Connexion_Click);
             // 
             // FORM_Main
             // 

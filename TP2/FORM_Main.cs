@@ -14,7 +14,8 @@ namespace TP2
     public partial class FORM_Main : Form
     {
         SqlConnection conn = null;
-       
+        DataSet FournisseurDataSet = null;
+
         FORM_Inventaire FI;
 
         public FORM_Main()
@@ -126,6 +127,34 @@ namespace TP2
         private void FORM_Main_FormClosing(object sender, FormClosingEventArgs e)
         {
             conn.Close();
+        }
+
+        private void ReloadDGV()
+        {
+            int lastIndex = -1;
+            if (DGV_Fournisseur.SelectedRows.Count > 0) lastIndex = DGV_Fournisseur.SelectedRows[0].Index;
+
+            SqlCommand SqlSelect = conn.CreateCommand();
+            SqlSelect.CommandText = "SELECT nomfournisseur,adfournisseur,villefournisseur,cpfournisseur,telfournisseur,soldefournisseur,courrielfournisseur from Fournisseur";
+
+            SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlSelect);
+            FournisseurDataSet = new DataSet();
+            SqlAdapter.Fill(FournisseurDataSet);
+            DGV_Fournisseur.DataSource = FournisseurDataSet.Tables[0];
+
+            if (lastIndex > -1 && DGV_Fournisseur.Rows.Count > 0) DGV_Fournisseur.Rows[Math.Min(lastIndex, DGV_Fournisseur.Rows.Count - 1)].Selected = true;
+
+            updateControls();
+        }
+
+        private void updateControls()
+        {
+
+        }
+
+        private void BTN_MODIF_Fournisseur_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

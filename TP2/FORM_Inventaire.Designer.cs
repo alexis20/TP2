@@ -141,6 +141,7 @@
             // 
             // CB_ID_Fournisseur
             // 
+            this.CB_ID_Fournisseur.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.CB_ID_Fournisseur.FormattingEnabled = true;
             this.CB_ID_Fournisseur.Location = new System.Drawing.Point(126, 119);
             this.CB_ID_Fournisseur.Name = "CB_ID_Fournisseur";

@@ -158,7 +158,7 @@ namespace TP2
 
             SqlCommand SqlSelect = conn.CreateCommand();
             SqlSelect.CommandText = "SELECT idinventaire as ID ,descriptioninventaire as DESC,qtestock as QTESTOCK,QteMinimum as QTEMIN,"+ 
-                "QteMaximum as QTEMAX from Inventaire WHERE IDFournisseur=" + DGV_Fournisseur.SelectedRows[0].Cells[0];
+                "QteMaximum as QTEMAX from Inventaire WHERE IDFournisseur=" + DGV_Fournisseur.SelectedRows[0].Cells[0].Value.ToString();
 
             SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlSelect);
             InventaireDataSet = new DataSet();
@@ -283,8 +283,9 @@ namespace TP2
 
         private void populerIDFournisseurs(FORM_Inventaire FI)
         {
+            
             for (int i = 0; i < DGV_Fournisseur.RowCount; i++)
-                FI.ajouterFournisseurs(DGV_Fournisseur.Rows[i].Cells[0].ToString() + " - " + DGV_Fournisseur.Rows[i].Cells[1].ToString());
+                FI.ajouterFournisseurs(DGV_Fournisseur.Rows[i].Cells[0].Value.ToString() + " - " + DGV_Fournisseur.Rows[i].Cells[1].Value.ToString());
         }
 
         private void BTN_AJTER_Inventaire_Click(object sender, EventArgs e)

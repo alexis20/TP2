@@ -130,9 +130,9 @@ namespace TP2
             updateControls();
         }
 
-        public void ajouterFournisseurs(string value)
+        public void ajouterFournisseurs(object value)
         {
-            CB_ID_Fournisseur.Items.Add(value);
+            CB_ID_Fournisseur.Items.Add(value.ToString());
         }
     }
 }

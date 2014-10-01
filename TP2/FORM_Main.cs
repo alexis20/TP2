@@ -36,6 +36,7 @@ namespace TP2
         private void FORM_Main_Load(object sender, EventArgs e)
         {
             Connection();
+            ReloadDGV();
             FI = new FORM_Inventaire();
         }
 
@@ -135,7 +136,8 @@ namespace TP2
             if (DGV_Fournisseur.SelectedRows.Count > 0) lastIndex = DGV_Fournisseur.SelectedRows[0].Index;
 
             SqlCommand SqlSelect = conn.CreateCommand();
-            SqlSelect.CommandText = "SELECT nomfournisseur,adfournisseur,villefournisseur,cpfournisseur,telfournisseur,soldefournisseur,courrielfournisseur from Fournisseur";
+            SqlSelect.CommandText = "SELECT nomfournisseur as NOM,adfournisseur as ADRESSE,villefournisseur as VILLE,cpfournisseur as CP,telfournisseur as TEL, " + 
+                                        "soldefournisseur as SOLDE,courrielfournisseur as COURRIEL from Fournisseur";
 
             SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlSelect);
             FournisseurDataSet = new DataSet();
@@ -144,12 +146,7 @@ namespace TP2
 
             if (lastIndex > -1 && DGV_Fournisseur.Rows.Count > 0) DGV_Fournisseur.Rows[Math.Min(lastIndex, DGV_Fournisseur.Rows.Count - 1)].Selected = true;
 
-            updateControls();
-        }
-
-        private void updateControls()
-        {
-
+            UpdateControls();
         }
 
         private void BTN_MODIF_Fournisseur_Click(object sender, EventArgs e)

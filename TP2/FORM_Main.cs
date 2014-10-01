@@ -198,11 +198,12 @@ namespace TP2
 
             if (FF.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                string sql = "insert into Fournisseur (NomFournisseur,AdFournisseur,VilleFournisseur,CPFournisseur,TelFournisseur,SoldeFournisseur,CourrielFournisseur)" +
-                    " VALUES(@NomFournisseur,@AdFournisseur,@VilleFournisseur,@CPFournisseur,@TelFournisseur,@SoldeFournisseur,@CourrielFournisseur)";
+                string sql = "update Fournisseur set NomFournisseur = @NomFournisseur,AdFournisseur=@AdFournisseur," +
+                    "VilleFournisseur=@VilleFournisseur,CPFournisseur= @CPFournisseur,TelFournisseur=@TelFournisseur,"+
+                    "SoldeFournisseur=@SoldeFournisseur,CourrielFournisseur=@CourrielFournisseur where idfournisseur = @idfournisseur";
                 try
                 {
-                    SqlCommand sqlAjout = new SqlCommand(sql, conn);
+                    SqlCommand sqlmodifier = new SqlCommand(sql, conn);
 
                     SqlParameter SQLParaNom = new SqlParameter("@NomFournisseur", SqlDbType.VarChar, 50);
                     SqlParameter SQLParamad = new SqlParameter("@AdFournisseur", SqlDbType.VarChar, 50);
@@ -211,6 +212,7 @@ namespace TP2
                     SqlParameter SQLParamTel = new SqlParameter("@TelFournisseur", SqlDbType.VarChar, 50);
                     SqlParameter SQLParamSolde = new SqlParameter("@SoldeFournisseur", SqlDbType.Int, 6);
                     SqlParameter SQLParamCourriel = new SqlParameter("@CourrielFournisseur", SqlDbType.VarChar, 50);
+                    SqlParameter SQLParamid = new SqlParameter("@idfournisseur", SqlDbType.Int, 10);
 
                     SQLParaNom.Value = FF.Nom;
                     SQLParamad.Value = FF.Adresse;
@@ -219,16 +221,20 @@ namespace TP2
                     SQLParamTel.Value = FF.Telephone;
                     SQLParamSolde.Value = FF.Solde;
                     SQLParamCourriel.Value = FF.Courriel;
+                    SQLParamid.Value = FF.Id;
 
-                    sqlAjout.Parameters.Add(SQLParaNom);
-                    sqlAjout.Parameters.Add(SQLParamad);
-                    sqlAjout.Parameters.Add(SQLParamVille);
-                    sqlAjout.Parameters.Add(SQLParamCP);
-                    sqlAjout.Parameters.Add(SQLParamTel);
-                    sqlAjout.Parameters.Add(SQLParamSolde);
-                    sqlAjout.Parameters.Add(SQLParamCourriel);
+                    sqlmodifier.Parameters.Add(SQLParaNom);
+                    sqlmodifier.Parameters.Add(SQLParamad);
+                    sqlmodifier.Parameters.Add(SQLParamVille);
+                    sqlmodifier.Parameters.Add(SQLParamCP);
+                    sqlmodifier.Parameters.Add(SQLParamTel);
+                    sqlmodifier.Parameters.Add(SQLParamSolde);
+                    sqlmodifier.Parameters.Add(SQLParamCourriel);
+                    sqlmodifier.Parameters.Add(SQLParamid);
 
-                    sqlAjout.ExecuteNonQuery();
+                    sqlmodifier.ExecuteNonQuery();
+
+                    ReloadDGV();
                 }
                 catch (SqlException ex)
                 {

@@ -152,6 +152,7 @@
             this.BTN_OK.TabIndex = 12;
             this.BTN_OK.Text = "OK";
             this.BTN_OK.UseVisualStyleBackColor = true;
+            this.BTN_OK.Click += new System.EventHandler(this.BTN_OK_Click);
             // 
             // BTN_Annuler
             // 

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.GDV_Fournisseur = new System.Windows.Forms.DataGridView();
+            this.DGV_Fournisseur = new System.Windows.Forms.DataGridView();
             this.DGV_Inventaire = new System.Windows.Forms.DataGridView();
             this.BTN_AJTER_Fournisseur = new System.Windows.Forms.Button();
             this.BTN_MODIF_Fournisseur = new System.Windows.Forms.Button();
@@ -47,20 +47,23 @@
             this.BTN_SUP_Inventaire = new System.Windows.Forms.Button();
             this.BTN_MODIF_Inventaire = new System.Windows.Forms.Button();
             this.BTN_AJTER_Inventaire = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.GDV_Fournisseur)).BeginInit();
+            this.DGV_QTE_Minimum = new System.Windows.Forms.DataGridView();
+            this.TSMI_Connexion = new System.Windows.Forms.ToolStripMenuItem();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Fournisseur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Inventaire)).BeginInit();
             this.MS_Menu.SuspendLayout();
             this.GB_FOURNISSEUR.SuspendLayout();
             this.GB_INVENTAIRE.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_QTE_Minimum)).BeginInit();
             this.SuspendLayout();
             // 
-            // GDV_Fournisseur
+            // DGV_Fournisseur
             // 
-            this.GDV_Fournisseur.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GDV_Fournisseur.Location = new System.Drawing.Point(6, 39);
-            this.GDV_Fournisseur.Name = "GDV_Fournisseur";
-            this.GDV_Fournisseur.Size = new System.Drawing.Size(345, 232);
-            this.GDV_Fournisseur.TabIndex = 0;
+            this.DGV_Fournisseur.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Fournisseur.Location = new System.Drawing.Point(6, 39);
+            this.DGV_Fournisseur.Name = "DGV_Fournisseur";
+            this.DGV_Fournisseur.Size = new System.Drawing.Size(345, 232);
+            this.DGV_Fournisseur.TabIndex = 0;
             // 
             // DGV_Inventaire
             // 
@@ -121,6 +124,7 @@
             // TSMI_Fichier
             // 
             this.TSMI_Fichier.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMI_Connexion,
             this.TSMI_Deconnexion,
             this.toolStripSeparator1,
             this.TSMI_Quitter});
@@ -133,6 +137,7 @@
             this.TSMI_Deconnexion.Name = "TSMI_Deconnexion";
             this.TSMI_Deconnexion.Size = new System.Drawing.Size(152, 22);
             this.TSMI_Deconnexion.Text = "Déconnexion";
+            this.TSMI_Deconnexion.Click += new System.EventHandler(this.TSMI_Deconnexion_Click);
             // 
             // toolStripSeparator1
             // 
@@ -144,6 +149,7 @@
             this.TSMI_Quitter.Name = "TSMI_Quitter";
             this.TSMI_Quitter.Size = new System.Drawing.Size(152, 22);
             this.TSMI_Quitter.Text = "Quitter";
+            this.TSMI_Quitter.Click += new System.EventHandler(this.TSMI_Quitter_Click);
             // 
             // TB_RECHERCHE_Fournisseur
             // 
@@ -173,7 +179,7 @@
             // 
             this.GB_FOURNISSEUR.Controls.Add(this.LBL_RECHERCHE_Fournisseur);
             this.GB_FOURNISSEUR.Controls.Add(this.TB_RECHERCHE_Fournisseur);
-            this.GB_FOURNISSEUR.Controls.Add(this.GDV_Fournisseur);
+            this.GB_FOURNISSEUR.Controls.Add(this.DGV_Fournisseur);
             this.GB_FOURNISSEUR.Controls.Add(this.BTN_SUP_Fournisseur);
             this.GB_FOURNISSEUR.Controls.Add(this.BTN_AJTER_Fournisseur);
             this.GB_FOURNISSEUR.Controls.Add(this.BTN_MODIF_Fournisseur);
@@ -226,19 +232,36 @@
             this.BTN_AJTER_Inventaire.Text = "Ajouter";
             this.BTN_AJTER_Inventaire.UseVisualStyleBackColor = true;
             // 
+            // DGV_QTE_Minimum
+            // 
+            this.DGV_QTE_Minimum.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_QTE_Minimum.Location = new System.Drawing.Point(18, 343);
+            this.DGV_QTE_Minimum.Name = "DGV_QTE_Minimum";
+            this.DGV_QTE_Minimum.Size = new System.Drawing.Size(726, 112);
+            this.DGV_QTE_Minimum.TabIndex = 12;
+            // 
+            // TSMI_Connexion
+            // 
+            this.TSMI_Connexion.Name = "TSMI_Connexion";
+            this.TSMI_Connexion.Size = new System.Drawing.Size(152, 22);
+            this.TSMI_Connexion.Text = "Connexion";
+            this.TSMI_Connexion.Click += new System.EventHandler(this.TSMI_Connexion_Click);
+            // 
             // FORM_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(763, 350);
+            this.ClientSize = new System.Drawing.Size(763, 467);
+            this.Controls.Add(this.DGV_QTE_Minimum);
             this.Controls.Add(this.GB_INVENTAIRE);
             this.Controls.Add(this.GB_FOURNISSEUR);
             this.Controls.Add(this.MS_Menu);
             this.MainMenuStrip = this.MS_Menu;
             this.Name = "FORM_Main";
             this.Text = "Àmoé";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FORM_Main_FormClosing);
             this.Load += new System.EventHandler(this.FORM_Main_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.GDV_Fournisseur)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Fournisseur)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Inventaire)).EndInit();
             this.MS_Menu.ResumeLayout(false);
             this.MS_Menu.PerformLayout();
@@ -246,6 +269,7 @@
             this.GB_FOURNISSEUR.PerformLayout();
             this.GB_INVENTAIRE.ResumeLayout(false);
             this.GB_INVENTAIRE.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_QTE_Minimum)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,7 +277,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView GDV_Fournisseur;
+        private System.Windows.Forms.DataGridView DGV_Fournisseur;
         private System.Windows.Forms.DataGridView DGV_Inventaire;
         private System.Windows.Forms.Button BTN_AJTER_Fournisseur;
         private System.Windows.Forms.Button BTN_MODIF_Fournisseur;
@@ -272,6 +296,8 @@
         private System.Windows.Forms.Button BTN_MODIF_Inventaire;
         private System.Windows.Forms.Button BTN_AJTER_Inventaire;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.DataGridView DGV_QTE_Minimum;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_Connexion;
     }
 }
 

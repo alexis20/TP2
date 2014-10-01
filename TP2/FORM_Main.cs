@@ -24,7 +24,7 @@ namespace TP2
 
         private void TB_RECHERCHE_Fournisseur_TextChanged(object sender, EventArgs e)
         {
-            UpdateControls();
+            updateControls();
         }
 
         private void DGV_Inventaire_CellContentClick(object sender, DataGridViewCellEventArgs e)

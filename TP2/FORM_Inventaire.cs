@@ -110,9 +110,14 @@ namespace TP2
         private string buildMessageErreur()
         {
             string message = "La quantité";
+            int count = 0;
             // Minimum
             if (QteMinimum >= QteMaximum || QteMinimum >= QteStock)
+            {
                 message += " minimum";
+                count++;
+            }
+
             // Stock
             if (QteStock < QteMinimum || QteStock > QteMaximum)
             {
@@ -120,6 +125,7 @@ namespace TP2
                     message += " stock";
                 else
                     message += ", stock";
+                count++;
             }
             // Maximum
             if (QteMaximum <= QteMinimum || QteMaximum < QteStock)
@@ -128,10 +134,16 @@ namespace TP2
                     message += " maximum";
                 else
                     message += " et maximum";
+                count++;
             }
             // Length
-            if (message.Trim().Length == 10)
+            if (count == 0)
                 message = "";
+            else if (count > 1)
+                message += " sont inadéquates";
+            else if (count == 1)
+                message += " est inadéquate";
+
             return message;
         }
 
@@ -179,11 +191,11 @@ namespace TP2
 
         private void BTN_OK_Click(object sender, EventArgs e)
         {
-            if (buildMessageErreur() == "")
+            if (buildMessageErreur() != "")
             {
                 MessageBox.Show(buildMessageErreur());
                 this.DialogResult = DialogResult.None;
-            } 
+            }
         }
     }
 }

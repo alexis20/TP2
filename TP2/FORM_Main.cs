@@ -37,7 +37,6 @@ namespace TP2
         {
             Connection();
             ReloadDGVFournisseur();
-            ReloadDGVInventaire();
         }
 
         private void Connection()
@@ -157,8 +156,8 @@ namespace TP2
             if (DGV_Inventaire.SelectedRows.Count > 0) lastIndex = DGV_Inventaire.SelectedRows[0].Index;
 
             SqlCommand SqlSelect = conn.CreateCommand();
-            SqlSelect.CommandText = "SELECT idinventaire as ID ,descriptioninventaire as DESC,qtestock as QTESTOCK,QteMinimum as QTEMIN,"+
-                "QteMaximum as QTEMAX from Inventaire WHERE IDFournisseur=" + DGV_Fournisseur.SelectedRows[0].Cells[0].Value.ToString();
+            SqlSelect.CommandText = "SELECT idinventaire as ID ,descriptioninventaire as Description,qtestock as QTESTOCK,QteMinimum as QTEMIN,"+
+                "QteMaximum as QTEMAX from Inventaire WHERE IDFournisseur=" +DGV_Fournisseur.SelectedRows[0].Cells[0].Value.ToString();
 
             SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlSelect);
             InventaireDataSet = new DataSet();
@@ -314,7 +313,7 @@ namespace TP2
 
                     sqlAjout.ExecuteNonQuery();
 
-                    ReloadDGVFournisseur();
+                    ReloadDGVInventaire(DGV_Fournisseur.SelectedRows[0].Cells[0].Value.ToString());
                 }
                 catch (SqlException ex)
                 {
@@ -329,10 +328,10 @@ namespace TP2
             FI.Titre = "Modification";
             FI.ID = (int)DGV_Inventaire.SelectedRows[0].Cells[0].Value;
             FI.Description = DGV_Inventaire.SelectedRows[0].Cells[1].Value.ToString();
-            FI.IDFournisseur = (int)DGV_Inventaire.SelectedRows[0].Cells[2].Value;
-            FI.QteStock = (int)DGV_Inventaire.SelectedRows[0].Cells[3].Value;
-            FI.QteMinimum = (int)DGV_Inventaire.SelectedRows[0].Cells[4].Value;
-            FI.QteMaximum = (int)DGV_Inventaire.SelectedRows[0].Cells[5].Value;
+            FI.IDFournisseur = (int)DGV_Fournisseur.SelectedRows[0].Cells[0].Value;
+            FI.QteStock = (int)DGV_Inventaire.SelectedRows[0].Cells[2].Value;
+            FI.QteMinimum = (int)DGV_Inventaire.SelectedRows[0].Cells[3].Value;
+            FI.QteMaximum = (int)DGV_Inventaire.SelectedRows[0].Cells[4].Value;
 
             if (FI.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -364,8 +363,8 @@ namespace TP2
                     sqlModifier.Parameters.Add(SQLParamID);
 
                     sqlModifier.ExecuteNonQuery();
-                    
-                    ReloadDGVInventaire();
+
+                    ReloadDGVInventaire(DGV_Fournisseur.SelectedRows[0].Cells[0].Value.ToString());
                 }
                 catch (SqlException ex)
                 {
@@ -388,13 +387,28 @@ namespace TP2
 
                     sqlDelete.Parameters.Add(paramIDInventaire);
                     sqlDelete.ExecuteNonQuery();
-                    ReloadDGVInventaire();
+                    ReloadDGVInventaire(DGV_Fournisseur.SelectedRows[0].Cells[0].Value.ToString());
                 }
                 catch (SqlException ex)
                 {
                     MessageBox.Show(ex.ToString());
                 }
             }
+        }
+
+        private void DGV_Fournisseur_SelectionChanged(object sender, EventArgs e)
+        {
+            ReloadDGVInventaire();
+        }
+
+        private void DGV_Fournisseur_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+        }
+
+        private void DGV_Fournisseur_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
         }
     }
 }

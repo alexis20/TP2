@@ -71,15 +71,23 @@
             this.DGV_Fournisseur.ShowEditingIcon = false;
             this.DGV_Fournisseur.Size = new System.Drawing.Size(345, 232);
             this.DGV_Fournisseur.TabIndex = 0;
+            this.DGV_Fournisseur.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGV_Fournisseur_ColumnHeaderMouseClick);
+            this.DGV_Fournisseur.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGV_Fournisseur_RowHeaderMouseClick);
+            this.DGV_Fournisseur.SelectionChanged += new System.EventHandler(this.DGV_Fournisseur_SelectionChanged);
             // 
             // DGV_Inventaire
             // 
+            this.DGV_Inventaire.AllowUserToAddRows = false;
+            this.DGV_Inventaire.AllowUserToDeleteRows = false;
             this.DGV_Inventaire.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Inventaire.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.DGV_Inventaire.Location = new System.Drawing.Point(6, 39);
+            this.DGV_Inventaire.MultiSelect = false;
             this.DGV_Inventaire.Name = "DGV_Inventaire";
+            this.DGV_Inventaire.ReadOnly = true;
+            this.DGV_Inventaire.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV_Inventaire.Size = new System.Drawing.Size(345, 232);
             this.DGV_Inventaire.TabIndex = 1;
-            this.DGV_Inventaire.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Inventaire_CellContentClick);
             // 
             // BTN_AJTER_Fournisseur
             // 

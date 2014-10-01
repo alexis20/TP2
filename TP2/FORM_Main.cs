@@ -56,16 +56,22 @@ namespace TP2
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message);
+                TSMI_Connexion.Enabled = true;
+                TSMI_Deconnexion.Enabled = false;
+
             }
-            TSMI_Connexion.Enabled = false;
-            TSMI_Deconnexion.Enabled = true;
+            if (conn.State.ToString() == "Open")
+            {
+                TSMI_Connexion.Enabled = false;
+                TSMI_Deconnexion.Enabled = true;
+            }
         }
 
         private void BTN_AJTER_Fournisseur_Click(object sender, EventArgs e)
         {
             FORM_Fournisseur FF = new FORM_Fournisseur();
             FF.Titre = "Ajouter";
-            if(FF.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (FF.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string sql = "insert into Fournisseur (NomFournisseur,AdFournisseur,VilleFournisseur,CPFournisseur,TelFournisseur,SoldeFournisseur,CourrielFournisseur)" +
                     " VALUES(@NomFournisseur,@AdFournisseur,@VilleFournisseur,@CPFournisseur,@TelFournisseur,@SoldeFournisseur,@CourrielFournisseur)";
@@ -75,7 +81,7 @@ namespace TP2
 
                     SqlParameter SQLParaNom = new SqlParameter("@NomFournisseur", SqlDbType.VarChar, 50);
                     SqlParameter SQLParamad = new SqlParameter("@AdFournisseur", SqlDbType.VarChar, 50);
-                    SqlParameter SQLParamVille= new SqlParameter("@VilleFournisseur", SqlDbType.VarChar, 50);  //Ajout
+                    SqlParameter SQLParamVille = new SqlParameter("@VilleFournisseur", SqlDbType.VarChar, 50);  //Ajout
                     SqlParameter SQLParamCP = new SqlParameter("@CPFournisseur", SqlDbType.VarChar, 50);
                     SqlParameter SQLParamTel = new SqlParameter("@TelFournisseur", SqlDbType.VarChar, 50);
                     SqlParameter SQLParamSolde = new SqlParameter("@SoldeFournisseur", SqlDbType.Int, 6);
@@ -144,12 +150,35 @@ namespace TP2
 
             if (lastIndex > -1 && DGV_Fournisseur.Rows.Count > 0) DGV_Fournisseur.Rows[Math.Min(lastIndex, DGV_Fournisseur.Rows.Count - 1)].Selected = true;
 
-            updateControls();
+            updateControlsFournisseur();
         }
 
-        private void updateControls()
+        private void updateControlsFournisseur()
         {
-
+            if (DGV_Fournisseur.RowCount > 0)
+            {
+                BTN_MODIF_Fournisseur.Enabled = true;
+                BTN_SUP_Fournisseur.Enabled = true;
+                BTN_AJTER_Inventaire.Enabled = true;
+                if(DGV_Inventaire.RowCount > 0)
+                {
+                    BTN_MODIF_Inventaire.Enabled = true;
+                    BTN_SUP_Inventaire.Enabled = true;
+                }
+                else 
+                {
+                    BTN_MODIF_Inventaire.Enabled = false;
+                    BTN_SUP_Inventaire.Enabled = false;
+                }
+            }
+            else
+            {
+                BTN_MODIF_Fournisseur.Enabled = false;
+                BTN_SUP_Fournisseur.Enabled = false;
+                BTN_AJTER_Inventaire.Enabled = false;
+                BTN_MODIF_Inventaire.Enabled = false;
+                BTN_SUP_Inventaire.Enabled = false;
+            }
         }
 
         private void BTN_MODIF_Fournisseur_Click(object sender, EventArgs e)

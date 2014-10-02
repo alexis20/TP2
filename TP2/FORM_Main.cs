@@ -38,11 +38,6 @@ namespace TP2
             }
         }
 
-        private void DGV_Inventaire_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void FORM_Main_Load(object sender, EventArgs e)
         {
             Connection();
@@ -64,12 +59,13 @@ namespace TP2
                 MessageBox.Show(ex.Message);
                 TSMI_Connexion.Enabled = true;
                 TSMI_Deconnexion.Enabled = false;
-
+                updateControls();
+                BTN_AJTER_Fournisseur.Enabled = false;
             }
             if (conn.State.ToString() == "Open")
             {
                 TSMI_Connexion.Enabled = false;
-                TSMI_Deconnexion.Enabled = true;
+                TSMI_Deconnexion.Enabled = true;                
             }
         }
 
@@ -393,6 +389,7 @@ namespace TP2
         private void BTN_MODIF_Inventaire_Click(object sender, EventArgs e)
         {
             FORM_Inventaire FI = new FORM_Inventaire();
+            FI.conn = this.conn;
             FI.Titre = "Modification";
             FI.ID = (int)DGV_Inventaire.SelectedRows[0].Cells[0].Value;
             FI.Description = DGV_Inventaire.SelectedRows[0].Cells[1].Value.ToString();
@@ -464,20 +461,6 @@ namespace TP2
                     MessageBox.Show(ex.ToString());
                 }
             }
-        }
-
-        private void DGV_Fournisseur_SelectionChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DGV_Fournisseur_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-
-        }
-
-        private void DGV_Fournisseur_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
         }
 
         private void DGV_Fournisseur_CellClick(object sender, DataGridViewCellEventArgs e)

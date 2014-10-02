@@ -72,9 +72,6 @@
             this.DGV_Fournisseur.Size = new System.Drawing.Size(345, 232);
             this.DGV_Fournisseur.TabIndex = 0;
             this.DGV_Fournisseur.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Fournisseur_CellClick);
-            this.DGV_Fournisseur.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGV_Fournisseur_ColumnHeaderMouseClick);
-            this.DGV_Fournisseur.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGV_Fournisseur_RowHeaderMouseClick);
-            this.DGV_Fournisseur.SelectionChanged += new System.EventHandler(this.DGV_Fournisseur_SelectionChanged);
             // 
             // DGV_Inventaire
             // 

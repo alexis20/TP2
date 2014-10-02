@@ -131,6 +131,7 @@
             this.TB_QTE_Minimum.Size = new System.Drawing.Size(170, 20);
             this.TB_QTE_Minimum.TabIndex = 9;
             this.TB_QTE_Minimum.TextChanged += new System.EventHandler(this.TB_QTE_Minimum_TextChanged);
+            this.TB_QTE_Minimum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB__KeyPress);
             // 
             // TB_QTE_Maximum
             // 
@@ -139,6 +140,7 @@
             this.TB_QTE_Maximum.Size = new System.Drawing.Size(170, 20);
             this.TB_QTE_Maximum.TabIndex = 10;
             this.TB_QTE_Maximum.TextChanged += new System.EventHandler(this.TB_QTE_Maximum_TextChanged);
+            this.TB_QTE_Maximum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB__KeyPress);
             // 
             // CB_ID_Fournisseur
             // 

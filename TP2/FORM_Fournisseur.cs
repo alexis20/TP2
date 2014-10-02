@@ -90,11 +90,11 @@ namespace TP2
                 TB_Tel.Text = value;
             }
         }
-        public int Solde
+        public double Solde
         {
             get
             {
-                return Int32.Parse(TB_Solde.Text);
+                return Double.Parse(TB_Solde.Text);
             }
             set
             {
@@ -116,6 +116,23 @@ namespace TP2
         public FORM_Fournisseur()
         {
             InitializeComponent();
+        }
+
+        private void TB_Solde_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar)
+&& !char.IsDigit(e.KeyChar)
+&& e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if (e.KeyChar == '.'
+                && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

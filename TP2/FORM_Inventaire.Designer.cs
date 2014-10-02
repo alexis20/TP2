@@ -122,6 +122,7 @@
             this.TB_QTE_Stock.Size = new System.Drawing.Size(170, 20);
             this.TB_QTE_Stock.TabIndex = 8;
             this.TB_QTE_Stock.TextChanged += new System.EventHandler(this.TB_QTE_Stock_TextChanged);
+            this.TB_QTE_Stock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB__KeyPress);
             // 
             // TB_QTE_Minimum
             // 

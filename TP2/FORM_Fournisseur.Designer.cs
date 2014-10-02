@@ -166,9 +166,11 @@
             // TB_Solde
             // 
             this.TB_Solde.Location = new System.Drawing.Point(113, 168);
+            this.TB_Solde.MaxLength = 18;
             this.TB_Solde.Name = "TB_Solde";
             this.TB_Solde.Size = new System.Drawing.Size(170, 20);
             this.TB_Solde.TabIndex = 14;
+            this.TB_Solde.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_Solde_KeyPress);
             // 
             // TB_Courriel
             // 

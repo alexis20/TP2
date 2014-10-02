@@ -134,5 +134,29 @@ namespace TP2
                 e.Handled = true;
             }
         }
+
+        private void updateControls()
+        {
+            // Alan est fatiguant en esti
+            if (TB_Nom.Text.Trim() == "")
+                BTN_OK.Enabled = false;
+            else
+                BTN_OK.Enabled = true;
+        }
+
+        private void TB_Nom_TextChanged(object sender, EventArgs e)
+        {
+            updateControls();
+        }
+
+        private void TB_Solde_TextChanged(object sender, EventArgs e)
+        {
+            updateControls();
+        }
+
+        private void FORM_Fournisseur_Load(object sender, EventArgs e)
+        {
+            updateControls();
+        }
     }
 }

@@ -134,6 +134,7 @@
             this.TB_Nom.Name = "TB_Nom";
             this.TB_Nom.Size = new System.Drawing.Size(170, 20);
             this.TB_Nom.TabIndex = 9;
+            this.TB_Nom.TextChanged += new System.EventHandler(this.TB_Nom_TextChanged);
             // 
             // TB_Adresse
             // 
@@ -170,6 +171,7 @@
             this.TB_Solde.Name = "TB_Solde";
             this.TB_Solde.Size = new System.Drawing.Size(170, 20);
             this.TB_Solde.TabIndex = 14;
+            this.TB_Solde.TextChanged += new System.EventHandler(this.TB_Solde_TextChanged);
             this.TB_Solde.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_Solde_KeyPress);
             // 
             // TB_Courriel
@@ -226,6 +228,7 @@
             this.Controls.Add(this.LBL_ID);
             this.Name = "FORM_Fournisseur";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Load += new System.EventHandler(this.FORM_Fournisseur_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

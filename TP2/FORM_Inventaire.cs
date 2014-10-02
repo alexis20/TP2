@@ -50,12 +50,12 @@ namespace TP2
             }
         }
 
-        public int IDFournisseur
+        public string IDFournisseur
         {
             get
             {
                 string[] TAB_Num = CB_ID_Fournisseur.Text.Split('-');
-                return Int32.Parse(TAB_Num[0].Trim());
+                return TAB_Num[0].Trim();
             }
             set
             {
@@ -63,11 +63,11 @@ namespace TP2
             }
         }
 
-        public int QteStock
+        public double QteStock
         {
             get
             {
-                return Int32.Parse(TB_QTE_Stock.Text);
+                return Double.Parse(TB_QTE_Stock.Text);
             }
             set
             {
@@ -75,11 +75,11 @@ namespace TP2
             }
         }
 
-        public int QteMinimum
+        public double QteMinimum
         {
             get
             {
-                return Int32.Parse(TB_QTE_Minimum.Text);
+                return Double.Parse(TB_QTE_Minimum.Text);
             }
             set
             {
@@ -87,11 +87,11 @@ namespace TP2
             }
         }
 
-        public int QteMaximum
+        public double QteMaximum
         {
             get
             {
-                return Int32.Parse(TB_QTE_Maximum.Text);
+                return Double.Parse(TB_QTE_Maximum.Text);
             }
             set
             {
@@ -201,15 +201,7 @@ namespace TP2
         private void TB__KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar)
-        && !char.IsDigit(e.KeyChar)
-        && e.KeyChar != '.')
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if (e.KeyChar == '.'
-                && (sender as TextBox).Text.IndexOf('.') > -1)
+        && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }

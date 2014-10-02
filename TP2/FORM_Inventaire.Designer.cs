@@ -118,6 +118,7 @@
             // TB_QTE_Stock
             // 
             this.TB_QTE_Stock.Location = new System.Drawing.Point(126, 147);
+            this.TB_QTE_Stock.MaxLength = 10;
             this.TB_QTE_Stock.Name = "TB_QTE_Stock";
             this.TB_QTE_Stock.Size = new System.Drawing.Size(170, 20);
             this.TB_QTE_Stock.TabIndex = 8;
@@ -127,6 +128,7 @@
             // TB_QTE_Minimum
             // 
             this.TB_QTE_Minimum.Location = new System.Drawing.Point(126, 173);
+            this.TB_QTE_Minimum.MaxLength = 10;
             this.TB_QTE_Minimum.Name = "TB_QTE_Minimum";
             this.TB_QTE_Minimum.Size = new System.Drawing.Size(170, 20);
             this.TB_QTE_Minimum.TabIndex = 9;
@@ -136,6 +138,7 @@
             // TB_QTE_Maximum
             // 
             this.TB_QTE_Maximum.Location = new System.Drawing.Point(126, 199);
+            this.TB_QTE_Maximum.MaxLength = 10;
             this.TB_QTE_Maximum.Name = "TB_QTE_Maximum";
             this.TB_QTE_Maximum.Size = new System.Drawing.Size(170, 20);
             this.TB_QTE_Maximum.TabIndex = 10;
@@ -144,7 +147,7 @@
             // 
             // CB_ID_Fournisseur
             // 
-            this.CB_ID_Fournisseur.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CB_ID_Fournisseur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_ID_Fournisseur.FormattingEnabled = true;
             this.CB_ID_Fournisseur.Location = new System.Drawing.Point(126, 119);
             this.CB_ID_Fournisseur.Name = "CB_ID_Fournisseur";

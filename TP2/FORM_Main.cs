@@ -48,7 +48,7 @@ namespace TP2
         private void Connection()
         {
             String connexionChaine;
-            connexionChaine = "Data Source=DAREN511-ASUS\\SQLEXPRESS2012;Initial Catalog=bdOperation;User ID=conOperation;Password=conOperation";
+            connexionChaine = "Data Source=localhost\\SQLEXPRESS2012;Initial Catalog=bdOperation;User ID=conOperation;Password=conOperation";
             conn = new SqlConnection(connexionChaine);
             try
             {
@@ -111,7 +111,14 @@ namespace TP2
                 }
                 catch (SqlException ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    if(ex.Number == 2627)
+                    {
+                        MessageBox.Show("Le nom du fournisseur doit etre unique", "Erreur 2627", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                            MessageBox.Show(ex.Message);
+                    }
                 }
             }
         }
@@ -120,6 +127,7 @@ namespace TP2
         {
             Connection();
             ReloadDGVFournisseur();
+            ReloadDGVInventaire();
             ReloadDGVQteMin();
             BTN_AJTER_Fournisseur.Enabled = true;
         }
@@ -269,7 +277,7 @@ namespace TP2
             FF.Ville = DGV_Fournisseur.SelectedRows[0].Cells[3].Value.ToString();
             FF.CodePostal = DGV_Fournisseur.SelectedRows[0].Cells[4].Value.ToString();
             FF.Telephone = DGV_Fournisseur.SelectedRows[0].Cells[5].Value.ToString();
-            FF.Solde = (int)DGV_Fournisseur.SelectedRows[0].Cells[6].Value;
+            FF.Solde = Double.Parse(DGV_Fournisseur.SelectedRows[0].Cells[6].Value.ToString());
             FF.Courriel = DGV_Fournisseur.SelectedRows[0].Cells[7].Value.ToString();
 
 
@@ -338,7 +346,14 @@ namespace TP2
                 }
                 catch (SqlException ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    if (ex.Number == 547)
+                    {
+                        MessageBox.Show("Le fournisseur ne doit pas contenir d'inventaire.", "Erreur 547", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
                 }
             }
         }
@@ -393,10 +408,10 @@ namespace TP2
             FI.Titre = "Modification";
             FI.ID = (int)DGV_Inventaire.SelectedRows[0].Cells[0].Value;
             FI.Description = DGV_Inventaire.SelectedRows[0].Cells[1].Value.ToString();
-            FI.IDFournisseur = (int)DGV_Fournisseur.SelectedRows[0].Cells[0].Value;
-            FI.QteStock = (int)DGV_Inventaire.SelectedRows[0].Cells[2].Value;
-            FI.QteMinimum = (int)DGV_Inventaire.SelectedRows[0].Cells[3].Value;
-            FI.QteMaximum = (int)DGV_Inventaire.SelectedRows[0].Cells[4].Value;
+            FI.IDFournisseur = DGV_Fournisseur.SelectedRows[0].Cells[0].Value.ToString() + " - " + DGV_Fournisseur.SelectedRows[0].Cells[1].Value.ToString();
+            FI.QteStock = Double.Parse(DGV_Inventaire.SelectedRows[0].Cells[2].Value.ToString());
+            FI.QteMinimum = Double.Parse(DGV_Inventaire.SelectedRows[0].Cells[3].Value.ToString());
+            FI.QteMaximum = Double.Parse(DGV_Inventaire.SelectedRows[0].Cells[4].Value.ToString());
 
             if (FI.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -414,7 +429,7 @@ namespace TP2
                     SqlParameter SQLParamID = new SqlParameter("@IDInventaire", SqlDbType.Int, 10);
 
                     SQLParaDesc.Value = FI.Description;
-                    SQLParamIDF.Value = FI.IDFournisseur;
+                    SQLParamIDF.Value = Int32.Parse(FI.IDFournisseur);
                     SQLParamStock.Value = FI.QteStock;
                     SQLParamMin.Value = FI.QteMinimum;
                     SQLParamMax.Value = FI.QteMaximum;

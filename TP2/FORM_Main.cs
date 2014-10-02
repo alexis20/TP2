@@ -16,6 +16,7 @@ namespace TP2
         SqlConnection conn = null;
         DataSet FournisseurDataSet = null;
         DataSet InventaireDataSet = null;
+        DataSet QteMinDataSet = null;
 
 
         public FORM_Main()
@@ -37,6 +38,7 @@ namespace TP2
         {
             Connection();
             ReloadDGVFournisseur();
+            ReloadDGVQteMin();
         }
 
         private void Connection()
@@ -157,7 +159,7 @@ namespace TP2
 
             SqlCommand SqlSelect = conn.CreateCommand();
             SqlSelect.CommandText = "SELECT idinventaire as ID ,descriptioninventaire as Description,qtestock as QTESTOCK,QteMinimum as QTEMIN,"+
-                "QteMaximum as QTEMAX from Inventaire WHERE IDFournisseur=" +DGV_Fournisseur.SelectedRows[0].Cells[0].Value.ToString();
+                "QteMaximum as QTEMAX from Inventaire WHERE IDFournisseur=" + DGV_Fournisseur.SelectedRows[0].Cells[0].Value.ToString();
 
             SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlSelect);
             InventaireDataSet = new DataSet();
@@ -166,6 +168,18 @@ namespace TP2
 
             if (lastIndex > -1 && DGV_Inventaire.Rows.Count > 0) DGV_Inventaire.Rows[Math.Min(lastIndex, DGV_Inventaire.Rows.Count - 1)].Selected = true;
             updateControls();
+        }
+
+        private void ReloadDGVQteMin()
+        {
+            SqlCommand SqlSelect = conn.CreateCommand();
+            SqlSelect.CommandText = "select nomfournisseur as FOURNISSEUR, descriptioninventaire as DESCRIPTION, QteMaximum-QteStock as NBACOMMANDER " + 
+                "from inventaire i inner join fournisseur f on i.IDFournisseur = f.IDFournisseur where QteStock = QteMinimum";
+
+            SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlSelect);
+            QteMinDataSet = new DataSet();
+            SqlAdapter.Fill(QteMinDataSet);
+            DGV_QTE_Minimum.DataSource = QteMinDataSet.Tables[0];
         }
 
         private void updateControls()
@@ -313,7 +327,8 @@ namespace TP2
 
                     sqlAjout.ExecuteNonQuery();
 
-                    ReloadDGVInventaire(DGV_Fournisseur.SelectedRows[0].Cells[0].Value.ToString());
+                    ReloadDGVInventaire();
+                    ReloadDGVQteMin();
                 }
                 catch (SqlException ex)
                 {
@@ -364,7 +379,8 @@ namespace TP2
 
                     sqlModifier.ExecuteNonQuery();
 
-                    ReloadDGVInventaire(DGV_Fournisseur.SelectedRows[0].Cells[0].Value.ToString());
+                    ReloadDGVInventaire();
+                    ReloadDGVQteMin();
                 }
                 catch (SqlException ex)
                 {
@@ -387,7 +403,8 @@ namespace TP2
 
                     sqlDelete.Parameters.Add(paramIDInventaire);
                     sqlDelete.ExecuteNonQuery();
-                    ReloadDGVInventaire(DGV_Fournisseur.SelectedRows[0].Cells[0].Value.ToString());
+                    ReloadDGVInventaire();
+                    ReloadDGVQteMin();
                 }
                 catch (SqlException ex)
                 {
@@ -398,7 +415,7 @@ namespace TP2
 
         private void DGV_Fournisseur_SelectionChanged(object sender, EventArgs e)
         {
-            ReloadDGVInventaire();
+            
         }
 
         private void DGV_Fournisseur_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -408,7 +425,11 @@ namespace TP2
 
         private void DGV_Fournisseur_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+        }
 
+        private void DGV_Fournisseur_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ReloadDGVInventaire();
         }
     }
 }

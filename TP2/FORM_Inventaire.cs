@@ -112,7 +112,7 @@ namespace TP2
             string message = "La quantité";
             int count = 0;
             // Minimum
-            if (QteMinimum >= QteMaximum || QteMinimum >= QteStock)
+            if (QteMinimum >= QteMaximum || QteMinimum > QteStock)
             {
                 message += " minimum";
                 count++;

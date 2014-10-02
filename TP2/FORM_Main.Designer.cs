@@ -71,6 +71,7 @@
             this.DGV_Fournisseur.ShowEditingIcon = false;
             this.DGV_Fournisseur.Size = new System.Drawing.Size(345, 232);
             this.DGV_Fournisseur.TabIndex = 0;
+            this.DGV_Fournisseur.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Fournisseur_CellClick);
             this.DGV_Fournisseur.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGV_Fournisseur_ColumnHeaderMouseClick);
             this.DGV_Fournisseur.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGV_Fournisseur_RowHeaderMouseClick);
             this.DGV_Fournisseur.SelectionChanged += new System.EventHandler(this.DGV_Fournisseur_SelectionChanged);
@@ -261,9 +262,18 @@
             // 
             // DGV_QTE_Minimum
             // 
+            this.DGV_QTE_Minimum.AllowUserToAddRows = false;
+            this.DGV_QTE_Minimum.AllowUserToDeleteRows = false;
+            this.DGV_QTE_Minimum.AllowUserToResizeColumns = false;
+            this.DGV_QTE_Minimum.AllowUserToResizeRows = false;
+            this.DGV_QTE_Minimum.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_QTE_Minimum.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_QTE_Minimum.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.DGV_QTE_Minimum.Location = new System.Drawing.Point(18, 343);
+            this.DGV_QTE_Minimum.MultiSelect = false;
             this.DGV_QTE_Minimum.Name = "DGV_QTE_Minimum";
+            this.DGV_QTE_Minimum.ReadOnly = true;
+            this.DGV_QTE_Minimum.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV_QTE_Minimum.Size = new System.Drawing.Size(726, 112);
             this.DGV_QTE_Minimum.TabIndex = 12;
             // 

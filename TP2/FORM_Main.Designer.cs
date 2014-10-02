@@ -199,6 +199,7 @@
             this.TB_RECHERCHE_Inventaire.Name = "TB_RECHERCHE_Inventaire";
             this.TB_RECHERCHE_Inventaire.Size = new System.Drawing.Size(183, 20);
             this.TB_RECHERCHE_Inventaire.TabIndex = 9;
+            this.TB_RECHERCHE_Inventaire.TextChanged += new System.EventHandler(this.TB_RECHERCHE_Inventaire_TextChanged);
             // 
             // GB_FOURNISSEUR
             // 

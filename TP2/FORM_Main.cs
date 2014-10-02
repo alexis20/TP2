@@ -26,7 +26,16 @@ namespace TP2
 
         private void TB_RECHERCHE_Fournisseur_TextChanged(object sender, EventArgs e)
         {
-            
+            if (TB_RECHERCHE_Fournisseur.Text != "")
+            {
+                ReloadDGVFournisseur(TB_RECHERCHE_Fournisseur.Text);
+                ReloadDGVInventaire();
+            }
+            else
+            {
+                ReloadDGVFournisseur();
+                ReloadDGVInventaire();
+            }
         }
 
         private void DGV_Inventaire_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -114,13 +123,21 @@ namespace TP2
         private void TSMI_Connexion_Click(object sender, EventArgs e)
         {
             Connection();
+            ReloadDGVFournisseur();
+            ReloadDGVQteMin();
+            BTN_AJTER_Fournisseur.Enabled = true;
         }
 
         private void TSMI_Deconnexion_Click(object sender, EventArgs e)
         {
-            conn.Close();
             TSMI_Deconnexion.Enabled = false;
             TSMI_Connexion.Enabled = true;
+            DGV_Inventaire.DataSource = null;
+            DGV_Fournisseur.DataSource = null;
+            DGV_QTE_Minimum.DataSource = null;
+            BTN_AJTER_Fournisseur.Enabled = false;
+            updateControls();
+            conn.Close();
         }
 
         private void TSMI_Quitter_Click(object sender, EventArgs e)
@@ -159,7 +176,7 @@ namespace TP2
 
             SqlCommand SqlSelect = conn.CreateCommand();
             SqlSelect.CommandText = "SELECT idfournisseur as ID ,nomfournisseur as NOM,adfournisseur as ADRESSE,villefournisseur as VILLE,cpfournisseur as CP,telfournisseur as TEL, " +
-                                        "soldefournisseur as SOLDE,courrielfournisseur as COURRIEL from Fournisseur where nomfournisseur like '" + value + "'" ;
+                                        "soldefournisseur as SOLDE,courrielfournisseur as COURRIEL from Fournisseur where nomfournisseur like '%" + value + "%'";
 
             SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlSelect);
             FournisseurDataSet = new DataSet();
@@ -177,7 +194,7 @@ namespace TP2
             if (DGV_Inventaire.SelectedRows.Count > 0) lastIndex = DGV_Inventaire.SelectedRows[0].Index;
 
             SqlCommand SqlSelect = conn.CreateCommand();
-            SqlSelect.CommandText = "SELECT idinventaire as ID ,descriptioninventaire as Description,qtestock as QTESTOCK,QteMinimum as QTEMIN,"+
+            SqlSelect.CommandText = "SELECT idinventaire as ID ,descriptioninventaire as Description,qtestock as QTESTOCK,QteMinimum as QTEMIN," +
                 "QteMaximum as QTEMAX from Inventaire WHERE IDFournisseur=" + DGV_Fournisseur.SelectedRows[0].Cells[0].Value.ToString();
 
             SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlSelect);
@@ -195,7 +212,7 @@ namespace TP2
 
             SqlCommand SqlSelect = conn.CreateCommand();
             SqlSelect.CommandText = "SELECT idinventaire as ID ,descriptioninventaire as Description,qtestock as QTESTOCK,QteMinimum as QTEMIN," +
-                "QteMaximum as QTEMAX from Inventaire WHERE IDFournisseur=" + DGV_Fournisseur.SelectedRows[0].Cells[0].Value.ToString() + " and  descriptioninventaire like '"+ value + "'";
+                "QteMaximum as QTEMAX from Inventaire WHERE IDFournisseur=" + DGV_Fournisseur.SelectedRows[0].Cells[0].Value.ToString() + " and  descriptioninventaire like '%" + value + "%'";
 
             SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlSelect);
             InventaireDataSet = new DataSet();
@@ -209,7 +226,7 @@ namespace TP2
         private void ReloadDGVQteMin()
         {
             SqlCommand SqlSelect = conn.CreateCommand();
-            SqlSelect.CommandText = "select nomfournisseur as FOURNISSEUR, descriptioninventaire as DESCRIPTION, QteMaximum-QteStock as NBACOMMANDER " + 
+            SqlSelect.CommandText = "select nomfournisseur as FOURNISSEUR, descriptioninventaire as DESCRIPTION, QteMaximum-QteStock as NBACOMMANDER " +
                 "from inventaire i inner join fournisseur f on i.IDFournisseur = f.IDFournisseur where QteStock = QteMinimum";
 
             SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlSelect);
@@ -451,7 +468,7 @@ namespace TP2
 
         private void DGV_Fournisseur_SelectionChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void DGV_Fournisseur_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -466,6 +483,14 @@ namespace TP2
         private void DGV_Fournisseur_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             ReloadDGVInventaire();
+        }
+
+        private void TB_RECHERCHE_Inventaire_TextChanged(object sender, EventArgs e)
+        {
+            if (TB_RECHERCHE_Inventaire.Text != "")
+                ReloadDGVInventaire(TB_RECHERCHE_Inventaire.Text);
+            else
+                ReloadDGVInventaire();
         }
     }
 }

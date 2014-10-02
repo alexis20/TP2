@@ -193,6 +193,7 @@
             this.Controls.Add(this.LBL_Description);
             this.Controls.Add(this.LBL_ID_Inventaire);
             this.Name = "FORM_Inventaire";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.FORM_Inventaire_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

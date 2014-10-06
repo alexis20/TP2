@@ -41,6 +41,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.TSMI_Quitter = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_Rapports = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_MAIN_FOURN = new System.Windows.Forms.ToolStripMenuItem();
             this.TB_RECHERCHE_Fournisseur = new System.Windows.Forms.TextBox();
             this.LBL_RECHERCHE_Inventaire = new System.Windows.Forms.Label();
             this.TB_RECHERCHE_Inventaire = new System.Windows.Forms.TextBox();
@@ -50,10 +51,10 @@
             this.BTN_MODIF_Inventaire = new System.Windows.Forms.Button();
             this.BTN_AJTER_Inventaire = new System.Windows.Forms.Button();
             this.DGV_QTE_Minimum = new System.Windows.Forms.DataGridView();
-            this.TSMI_LISTER_FOURN = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMI_LISTER_FOURN_Pub = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMI_LISTER_FOURN_Prod = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMI_LISTER_FOURN_QteMin = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_LIST_Fournisseurs = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_LIST_Publipostage = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_LIST_Produits = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_LIST_QteMin = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Fournisseur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Inventaire)).BeginInit();
             this.MS_Menu.SuspendLayout();
@@ -182,13 +183,21 @@
             // TSMI_Rapports
             // 
             this.TSMI_Rapports.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TSMI_LISTER_FOURN,
-            this.TSMI_LISTER_FOURN_Pub,
-            this.TSMI_LISTER_FOURN_Prod,
-            this.TSMI_LISTER_FOURN_QteMin});
+            this.TSMI_MAIN_FOURN});
             this.TSMI_Rapports.Name = "TSMI_Rapports";
             this.TSMI_Rapports.Size = new System.Drawing.Size(66, 20);
             this.TSMI_Rapports.Text = "Rapports";
+            // 
+            // TSMI_MAIN_FOURN
+            // 
+            this.TSMI_MAIN_FOURN.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMI_LIST_Fournisseurs,
+            this.TSMI_LIST_Publipostage,
+            this.TSMI_LIST_Produits,
+            this.TSMI_LIST_QteMin});
+            this.TSMI_MAIN_FOURN.Name = "TSMI_MAIN_FOURN";
+            this.TSMI_MAIN_FOURN.Size = new System.Drawing.Size(152, 22);
+            this.TSMI_MAIN_FOURN.Text = "Fournisseurs";
             // 
             // TB_RECHERCHE_Fournisseur
             // 
@@ -292,33 +301,33 @@
             this.DGV_QTE_Minimum.Size = new System.Drawing.Size(726, 112);
             this.DGV_QTE_Minimum.TabIndex = 12;
             // 
-            // TSMI_LISTER_FOURN
+            // TSMI_LIST_Fournisseurs
             // 
-            this.TSMI_LISTER_FOURN.Name = "TSMI_LISTER_FOURN";
-            this.TSMI_LISTER_FOURN.Size = new System.Drawing.Size(220, 22);
-            this.TSMI_LISTER_FOURN.Text = "Fournisseurs";
-            this.TSMI_LISTER_FOURN.Click += new System.EventHandler(this.TSMI_LISTER_FOURN_Click);
+            this.TSMI_LIST_Fournisseurs.Name = "TSMI_LIST_Fournisseurs";
+            this.TSMI_LIST_Fournisseurs.Size = new System.Drawing.Size(184, 22);
+            this.TSMI_LIST_Fournisseurs.Text = "Tous les fournisseurs";
+            this.TSMI_LIST_Fournisseurs.Click += new System.EventHandler(this.TSMI_LIST_Fournisseurs_Click);
             // 
-            // TSMI_LISTER_FOURN_Pub
+            // TSMI_LIST_Publipostage
             // 
-            this.TSMI_LISTER_FOURN_Pub.Name = "TSMI_LISTER_FOURN_Pub";
-            this.TSMI_LISTER_FOURN_Pub.Size = new System.Drawing.Size(220, 22);
-            this.TSMI_LISTER_FOURN_Pub.Text = "Fournisseurs (publipostage)";
-            this.TSMI_LISTER_FOURN_Pub.Click += new System.EventHandler(this.TSMI_LISTER_FOURN_Pub_Click);
+            this.TSMI_LIST_Publipostage.Name = "TSMI_LIST_Publipostage";
+            this.TSMI_LIST_Publipostage.Size = new System.Drawing.Size(184, 22);
+            this.TSMI_LIST_Publipostage.Text = "Pour publipostage";
+            this.TSMI_LIST_Publipostage.Click += new System.EventHandler(this.TSMI_LIST_Publipostage_Click);
             // 
-            // TSMI_LISTER_FOURN_Prod
+            // TSMI_LIST_Produits
             // 
-            this.TSMI_LISTER_FOURN_Prod.Name = "TSMI_LISTER_FOURN_Prod";
-            this.TSMI_LISTER_FOURN_Prod.Size = new System.Drawing.Size(220, 22);
-            this.TSMI_LISTER_FOURN_Prod.Text = "Fournisseurs (produits)";
-            this.TSMI_LISTER_FOURN_Prod.Click += new System.EventHandler(this.TSMI_LISTER_FOURN_Prod_Click);
+            this.TSMI_LIST_Produits.Name = "TSMI_LIST_Produits";
+            this.TSMI_LIST_Produits.Size = new System.Drawing.Size(184, 22);
+            this.TSMI_LIST_Produits.Text = "Avec produits";
+            this.TSMI_LIST_Produits.Click += new System.EventHandler(this.TSMI_LIST_Produits_Click);
             // 
-            // TSMI_LISTER_FOURN_QteMin
+            // TSMI_LIST_QteMin
             // 
-            this.TSMI_LISTER_FOURN_QteMin.Name = "TSMI_LISTER_FOURN_QteMin";
-            this.TSMI_LISTER_FOURN_QteMin.Size = new System.Drawing.Size(220, 22);
-            this.TSMI_LISTER_FOURN_QteMin.Text = "Fournisseurs (quantité min)";
-            this.TSMI_LISTER_FOURN_QteMin.Click += new System.EventHandler(this.TSMI_LISTER_FOURN_QteMin_Click);
+            this.TSMI_LIST_QteMin.Name = "TSMI_LIST_QteMin";
+            this.TSMI_LIST_QteMin.Size = new System.Drawing.Size(184, 22);
+            this.TSMI_LIST_QteMin.Text = "Quantité minimale";
+            this.TSMI_LIST_QteMin.Click += new System.EventHandler(this.TSMI_LIST_QteMin_Click);
             // 
             // FORM_Main
             // 
@@ -373,10 +382,11 @@
         private System.Windows.Forms.DataGridView DGV_QTE_Minimum;
         private System.Windows.Forms.ToolStripMenuItem TSMI_Connexion;
         private System.Windows.Forms.ToolStripMenuItem TSMI_Rapports;
-        private System.Windows.Forms.ToolStripMenuItem TSMI_LISTER_FOURN;
-        private System.Windows.Forms.ToolStripMenuItem TSMI_LISTER_FOURN_Pub;
-        private System.Windows.Forms.ToolStripMenuItem TSMI_LISTER_FOURN_Prod;
-        private System.Windows.Forms.ToolStripMenuItem TSMI_LISTER_FOURN_QteMin;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_MAIN_FOURN;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_LIST_Fournisseurs;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_LIST_Publipostage;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_LIST_Produits;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_LIST_QteMin;
     }
 }
 

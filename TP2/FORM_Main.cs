@@ -501,26 +501,36 @@ namespace TP2
                 ReloadDGVInventaire();
         }
 
-        private void TSMI_LISTER_FOURN_Click(object sender, EventArgs e)
+        private void TSMI_LIST_Fournisseurs_Click(object sender, EventArgs e)
         {
             FORM_Rapport FR = new FORM_Rapport();
             FR.codeRapport = 0;
             FR.conn = this.conn;
+            FR.ShowDialog();
         }
 
-        private void TSMI_LISTER_FOURN_Pub_Click(object sender, EventArgs e)
+        private void TSMI_LIST_Publipostage_Click(object sender, EventArgs e)
         {
-
+            FORM_Rapport FR = new FORM_Rapport();
+            FR.codeRapport = 1;
+            FR.conn = this.conn;
+            FR.ShowDialog();
         }
 
-        private void TSMI_LISTER_FOURN_Prod_Click(object sender, EventArgs e)
+        private void TSMI_LIST_Produits_Click(object sender, EventArgs e)
         {
-
+            FORM_Rapport FR = new FORM_Rapport();
+            FR.codeRapport = 2;
+            FR.conn = this.conn;
+            FR.ShowDialog();
         }
 
-        private void TSMI_LISTER_FOURN_QteMin_Click(object sender, EventArgs e)
+        private void TSMI_LIST_QteMin_Click(object sender, EventArgs e)
         {
-
+            FORM_Rapport FR = new FORM_Rapport();
+            FR.codeRapport = 3;
+            FR.conn = this.conn;
+            FR.ShowDialog();
         }
     }
 }

@@ -131,6 +131,7 @@
             // TB_Nom
             // 
             this.TB_Nom.Location = new System.Drawing.Point(113, 38);
+            this.TB_Nom.MaxLength = 50;
             this.TB_Nom.Name = "TB_Nom";
             this.TB_Nom.Size = new System.Drawing.Size(170, 20);
             this.TB_Nom.TabIndex = 9;
@@ -139,6 +140,7 @@
             // TB_Adresse
             // 
             this.TB_Adresse.Location = new System.Drawing.Point(113, 64);
+            this.TB_Adresse.MaxLength = 50;
             this.TB_Adresse.Name = "TB_Adresse";
             this.TB_Adresse.Size = new System.Drawing.Size(170, 20);
             this.TB_Adresse.TabIndex = 10;
@@ -146,6 +148,7 @@
             // TB_Ville
             // 
             this.TB_Ville.Location = new System.Drawing.Point(113, 90);
+            this.TB_Ville.MaxLength = 50;
             this.TB_Ville.Name = "TB_Ville";
             this.TB_Ville.Size = new System.Drawing.Size(170, 20);
             this.TB_Ville.TabIndex = 11;
@@ -153,6 +156,7 @@
             // TB_CP
             // 
             this.TB_CP.Location = new System.Drawing.Point(113, 116);
+            this.TB_CP.MaxLength = 50;
             this.TB_CP.Name = "TB_CP";
             this.TB_CP.Size = new System.Drawing.Size(170, 20);
             this.TB_CP.TabIndex = 12;
@@ -160,6 +164,7 @@
             // TB_Tel
             // 
             this.TB_Tel.Location = new System.Drawing.Point(113, 142);
+            this.TB_Tel.MaxLength = 50;
             this.TB_Tel.Name = "TB_Tel";
             this.TB_Tel.Size = new System.Drawing.Size(170, 20);
             this.TB_Tel.TabIndex = 13;
@@ -177,6 +182,7 @@
             // TB_Courriel
             // 
             this.TB_Courriel.Location = new System.Drawing.Point(113, 194);
+            this.TB_Courriel.MaxLength = 50;
             this.TB_Courriel.Name = "TB_Courriel";
             this.TB_Courriel.Size = new System.Drawing.Size(170, 20);
             this.TB_Courriel.TabIndex = 15;
@@ -226,6 +232,7 @@
             this.Controls.Add(this.LBL_Adresse);
             this.Controls.Add(this.LBL_Nom);
             this.Controls.Add(this.LBL_ID);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FORM_Fournisseur";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.FORM_Fournisseur_Load);

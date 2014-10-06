@@ -284,6 +284,7 @@
             this.Controls.Add(this.GB_INVENTAIRE);
             this.Controls.Add(this.GB_FOURNISSEUR);
             this.Controls.Add(this.MS_Menu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.MS_Menu;
             this.Name = "FORM_Main";
             this.Text = "Àmoé";

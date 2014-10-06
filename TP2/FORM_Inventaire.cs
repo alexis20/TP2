@@ -112,14 +112,14 @@ namespace TP2
             string message = "La quantité";
             int count = 0;
             // Minimum
-            if (QteMinimum >= QteMaximum || QteMinimum > QteStock)
+            if (QteMinimum >= QteMaximum)
             {
                 message += " minimum";
                 count++;
             }
 
             // Stock
-            if (QteStock < QteMinimum || QteStock > QteMaximum)
+            if (QteStock > QteMaximum)
             {
                 if (message.Trim().Length == 10)
                     message += " stock";
@@ -139,10 +139,10 @@ namespace TP2
             // Length
             if (count == 0)
                 message = "";
-            else if (count > 1)
-                message += " sont inadéquates";
             else if (count == 1)
                 message += " est inadéquate";
+            else if (count > 1)
+                message += " sont inadéquates"; 
 
             return message;
         }

@@ -137,8 +137,7 @@ namespace TP2
 
         private void updateControls()
         {
-            // Alan est fatiguant en esti
-            if (TB_Nom.Text.Trim() == "")
+            if (TB_Nom.Text.Trim() == "" || TB_Solde.Text.Trim() == "" || TB_Solde.Text.Trim() == ".")
                 BTN_OK.Enabled = false;
             else
                 BTN_OK.Enabled = true;

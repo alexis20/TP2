@@ -42,6 +42,7 @@ namespace TP2
         {
             Connection();
             ReloadDGVFournisseur();
+            ReloadDGVInventaire();
             ReloadDGVQteMin();
         }
 
@@ -231,7 +232,7 @@ namespace TP2
         {
             SqlCommand SqlSelect = conn.CreateCommand();
             SqlSelect.CommandText = "select nomfournisseur as FOURNISSEUR, descriptioninventaire as DESCRIPTION, QteMaximum-QteStock as NBACOMMANDER " +
-                "from inventaire i inner join fournisseur f on i.IDFournisseur = f.IDFournisseur where QteStock = QteMinimum";
+                "from inventaire i inner join fournisseur f on i.IDFournisseur = f.IDFournisseur where QteStock <= QteMinimum";
 
             SqlDataAdapter SqlAdapter = new SqlDataAdapter(SqlSelect);
             QteMinDataSet = new DataSet();
@@ -323,7 +324,14 @@ namespace TP2
                 }
                 catch (SqlException ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    if (ex.Number == 547)
+                    {
+                        MessageBox.Show("Le fournisseur ne doit pas contenir d'inventaire.", "Erreur 547", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
                 }
             }
         }

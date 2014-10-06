@@ -109,6 +109,7 @@
             // TB_Description
             // 
             this.TB_Description.Location = new System.Drawing.Point(126, 46);
+            this.TB_Description.MaxLength = 50;
             this.TB_Description.Multiline = true;
             this.TB_Description.Name = "TB_Description";
             this.TB_Description.Size = new System.Drawing.Size(170, 67);
@@ -147,7 +148,6 @@
             // 
             // CB_ID_Fournisseur
             // 
-            this.CB_ID_Fournisseur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_ID_Fournisseur.FormattingEnabled = true;
             this.CB_ID_Fournisseur.Location = new System.Drawing.Point(126, 119);
             this.CB_ID_Fournisseur.Name = "CB_ID_Fournisseur";
@@ -198,6 +198,7 @@
             this.Controls.Add(this.LBL_ID_Fournisseur);
             this.Controls.Add(this.LBL_Description);
             this.Controls.Add(this.LBL_ID_Inventaire);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FORM_Inventaire";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.FORM_Inventaire_Load);

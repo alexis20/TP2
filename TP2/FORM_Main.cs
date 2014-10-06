@@ -66,7 +66,8 @@ namespace TP2
             if (conn.State.ToString() == "Open")
             {
                 TSMI_Connexion.Enabled = false;
-                TSMI_Deconnexion.Enabled = true;                
+                TSMI_Deconnexion.Enabled = true;
+                TSMI_Rapports.Enabled = true;
             }
         }
 
@@ -137,6 +138,7 @@ namespace TP2
         {
             TSMI_Deconnexion.Enabled = false;
             TSMI_Connexion.Enabled = true;
+            TSMI_Rapports.Enabled = false;
             DGV_Inventaire.DataSource = null;
             DGV_Fournisseur.DataSource = null;
             DGV_QTE_Minimum.DataSource = null;
@@ -497,6 +499,26 @@ namespace TP2
                 ReloadDGVInventaire(TB_RECHERCHE_Inventaire.Text);
             else
                 ReloadDGVInventaire();
+        }
+
+        private void TSMI_LISTER_FOURN_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TSMI_LISTER_FOURN_Pub_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TSMI_LISTER_FOURN_Prod_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TSMI_LISTER_FOURN_QteMin_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

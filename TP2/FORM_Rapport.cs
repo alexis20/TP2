@@ -30,6 +30,16 @@ namespace TP2
         //              3 -- Fournisseurs (quantité minimale)
 
 
+        private void FORM_Rapport_Load(object sender, EventArgs e)
+        {
+            switch (codeRapport)
+            {
+                case 0:
+                    listerTousFournisseurs();
+                    break;
+            }
+        }
+
         private void listerTousFournisseurs()
         {
             try

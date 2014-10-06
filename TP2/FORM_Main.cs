@@ -503,7 +503,9 @@ namespace TP2
 
         private void TSMI_LISTER_FOURN_Click(object sender, EventArgs e)
         {
-
+            FORM_Rapport FR = new FORM_Rapport();
+            FR.codeRapport = 0;
+            FR.conn = this.conn;
         }
 
         private void TSMI_LISTER_FOURN_Pub_Click(object sender, EventArgs e)

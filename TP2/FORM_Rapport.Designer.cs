@@ -50,6 +50,7 @@
             this.ClientSize = new System.Drawing.Size(818, 428);
             this.Controls.Add(this.CRV_Rapport);
             this.Name = "FORM_Rapport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FORM_Rapport";
             this.Load += new System.EventHandler(this.FORM_Rapport_Load);
             this.ResumeLayout(false);

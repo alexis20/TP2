@@ -56,7 +56,8 @@ namespace TP2
         {
             try
             {
-                string sql = "SELECT * FROM Fournisseur ORDER BY IDFournisseur";
+                //string sql = "SELECT * FROM Fournisseur ORDER BY IDFournisseur";
+                string sql = "SELECT IDFournisseur FROM Fournisseur";
                 SqlDataAdapter monDataAdapter = new SqlDataAdapter();
                 ReportDocument monRapport = new ReportDocument();
 
@@ -89,7 +90,8 @@ namespace TP2
         {
             try
             {
-                string sql = "SELECT * FROM Fournisseur ORDER BY IDFournisseur";
+                //string sql = "SELECT * FROM Fournisseur ORDER BY IDFournisseur";
+                string sql = "SELECT IDFournisseur FROM Fournisseur";
                 SqlDataAdapter monDataAdapter = new SqlDataAdapter();
                 ReportDocument monRapport = new ReportDocument();
 
@@ -122,8 +124,9 @@ namespace TP2
         {
             try
             {
-                string sql = "SELECT F.IDFournisseur, NomFournisseur, DescriptionInventaire, QteStock, QteMinimum, QteMaximum " +
-                             " FROM Fournisseur F INNER JOIN Inventaire I ON F.IDFournisseur = I.IDFournisseur ORDER BY F.IDFournisseur";
+                //string sql = "SELECT F.IDFournisseur, NomFournisseur, DescriptionInventaire, QteStock, QteMinimum, QteMaximum " +
+                //             " FROM Fournisseur F INNER JOIN Inventaire I ON F.IDFournisseur = I.IDFournisseur ORDER BY F.IDFournisseur";
+                string sql = "SELECT IDFournisseur, NomFournisseur FROM Fournisseur";
                 SqlDataAdapter monDataAdapter = new SqlDataAdapter();
                 ReportDocument monRapport = new ReportDocument();
 
@@ -156,9 +159,10 @@ namespace TP2
         {
             try
             {
-                string sql = "SELECT F.IDFournisseur, NomFournisseur, DescriptionInventaire, QteMaximum-QteStock " +
-                "FROM Inventaire I INNER JOIN Fournisseur F ON I.IDFournisseur = F.IDFournisseur WHERE QteStock <= QteMinimum" +
-                " ORDER BY F.IDFournisseur";
+                //string sql = "SELECT F.IDFournisseur, NomFournisseur, DescriptionInventaire, QteMaximum-QteStock " +
+                //"FROM Inventaire I INNER JOIN Fournisseur F ON I.IDFournisseur = F.IDFournisseur WHERE QteStock <= QteMinimum" +
+                //" ORDER BY F.IDFournisseur";
+                string sql = "SELECT IDFournisseur FROM Fournisseur";
                 SqlDataAdapter monDataAdapter = new SqlDataAdapter();
                 ReportDocument monRapport = new ReportDocument();
 

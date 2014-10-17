@@ -70,25 +70,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CRYSTAL_Fournisseurs.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CRYSTAL_Produits.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CRYSTAL_Produits.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CRYSTAL_Publipostage.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CRYSTAL_Publipostage.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CRYSTAL_QteMin.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CRYSTAL_QteMin.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="FORM_Fournisseur.cs">
       <SubType>Form</SubType>

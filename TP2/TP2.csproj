@@ -70,21 +70,25 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CRYSTAL_Fournisseurs.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CRYSTAL_Produits.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CRYSTAL_Produits.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CRYSTAL_Publipostage.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CRYSTAL_Publipostage.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="CRYSTAL_QteMin.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CRYSTAL_QteMin.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="FORM_Fournisseur.cs">
       <SubType>Form</SubType>
@@ -98,6 +102,12 @@
     <Compile Include="FORM_Inventaire.Designer.cs">
       <DependentUpon>FORM_Inventaire.cs</DependentUpon>
     </Compile>
+    <Compile Include="FORM_Lister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM_Lister.Designer.cs">
+      <DependentUpon>FORM_Lister.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORM_Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +119,15 @@
     </Compile>
     <Compile Include="FORM_Rapport.Designer.cs">
       <DependentUpon>FORM_Rapport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MonDataSet.cs">
+      <DependentUpon>MonDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MonDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MonDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -134,6 +153,9 @@
     <EmbeddedResource Include="FORM_Inventaire.resx">
       <DependentUpon>FORM_Inventaire.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FORM_Lister.resx">
+      <DependentUpon>FORM_Lister.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FORM_Main.resx">
       <DependentUpon>FORM_Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,6 +171,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="MonDataSet.xsc">
+      <DependentUpon>MonDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MonDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MonDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="MonDataSet.xss">
+      <DependentUpon>MonDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

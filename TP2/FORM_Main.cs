@@ -532,5 +532,32 @@ namespace TP2
             FR.conn = this.conn;
             FR.ShowDialog();
         }
+
+        private void TSMI_LIST_Clients_Click(object sender, EventArgs e)
+        {
+            FORM_Lister FL = new FORM_Lister();
+            FL.Text = "Tous les clients";
+            FL.codeListe = 0;
+            FL.conn = this.conn;
+            FL.ShowDialog();
+        }
+
+        private void TSMI_LIST_Factures_Click(object sender, EventArgs e)
+        {
+            FORM_Lister FL = new FORM_Lister();
+            FL.Text = "Toutes les factures";
+            FL.codeListe = 1;
+            FL.conn = this.conn;
+            FL.ShowDialog();
+        }
+
+        private void TSMI_LIST_CL_Factures_Click(object sender, EventArgs e)
+        {
+            FORM_Lister FL = new FORM_Lister();
+            FL.Text = "Toutes les factures d'un client";
+            FL.codeListe = 2;
+            FL.conn = this.conn;
+            FL.ShowDialog();
+        }
     }
 }

@@ -67,7 +67,6 @@ namespace TP2
             {
                 TSMI_Connexion.Enabled = false;
                 TSMI_Deconnexion.Enabled = true;
-                TSMI_Rapports.Enabled = true;
             }
         }
 
@@ -138,7 +137,6 @@ namespace TP2
         {
             TSMI_Deconnexion.Enabled = false;
             TSMI_Connexion.Enabled = true;
-            TSMI_Rapports.Enabled = false;
             DGV_Inventaire.DataSource = null;
             DGV_Fournisseur.DataSource = null;
             DGV_QTE_Minimum.DataSource = null;
@@ -501,38 +499,6 @@ namespace TP2
                 ReloadDGVInventaire();
         }
 
-        private void TSMI_LIST_Fournisseurs_Click(object sender, EventArgs e)
-        {
-            FORM_Rapport FR = new FORM_Rapport();
-            FR.codeRapport = 0;
-            FR.conn = this.conn;
-            FR.ShowDialog();
-        }
-
-        private void TSMI_LIST_Publipostage_Click(object sender, EventArgs e)
-        {
-            FORM_Rapport FR = new FORM_Rapport();
-            FR.codeRapport = 1;
-            FR.conn = this.conn;
-            FR.ShowDialog();
-        }
-
-        private void TSMI_LIST_Produits_Click(object sender, EventArgs e)
-        {
-            FORM_Rapport FR = new FORM_Rapport();
-            FR.codeRapport = 2;
-            FR.conn = this.conn;
-            FR.ShowDialog();
-        }
-
-        private void TSMI_LIST_QteMin_Click(object sender, EventArgs e)
-        {
-            FORM_Rapport FR = new FORM_Rapport();
-            FR.codeRapport = 3;
-            FR.conn = this.conn;
-            FR.ShowDialog();
-        }
-
         private void TSMI_LIST_Clients_Click(object sender, EventArgs e)
         {
             FORM_Lister FL = new FORM_Lister();
@@ -558,6 +524,30 @@ namespace TP2
             FL.codeListe = 2;
             FL.conn = this.conn;
             FL.ShowDialog();
+        }
+
+        private void TSMI_Dangereux_Click(object sender, EventArgs e)
+        {
+            FORM_Dangereux FD = new FORM_Dangereux();
+            FD.Text = "Lister les produits dangereux";
+            FD.codeListe = 0;
+            FD.ShowDialog();
+        }
+
+        private void TSMI_NonDangereux_Click(object sender, EventArgs e)
+        {
+            FORM_Dangereux FD = new FORM_Dangereux();
+            FD.Text = "Lister les produits non dangereux";
+            FD.codeListe = 1;
+            FD.ShowDialog();
+        }
+
+        private void TSMI_Tout_Click(object sender, EventArgs e)
+        {
+            FORM_Dangereux FD = new FORM_Dangereux();
+            FD.Text = "Lister tous les produits";
+            FD.codeListe = 2;
+            FD.ShowDialog();
         }
     }
 }

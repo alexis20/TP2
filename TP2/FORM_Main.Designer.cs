@@ -40,18 +40,15 @@
             this.TSMI_Deconnexion = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.TSMI_Quitter = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMI_Rapports = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMI_MAIN_FOURN = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMI_LIST_Fournisseurs = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMI_LIST_Publipostage = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMI_LIST_Produits = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMI_LIST_QteMin = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMI_Lister = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_Partie3 = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_Clients = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_LIST_Clients = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_LIST_CL_Factures = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_Factures = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMI_LIST_Factures = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_Partie4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_Dangereux = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMI_NonDangereux = new System.Windows.Forms.ToolStripMenuItem();
             this.TB_RECHERCHE_Fournisseur = new System.Windows.Forms.TextBox();
             this.LBL_RECHERCHE_Inventaire = new System.Windows.Forms.Label();
             this.TB_RECHERCHE_Inventaire = new System.Windows.Forms.TextBox();
@@ -61,6 +58,7 @@
             this.BTN_MODIF_Inventaire = new System.Windows.Forms.Button();
             this.BTN_AJTER_Inventaire = new System.Windows.Forms.Button();
             this.DGV_QTE_Minimum = new System.Windows.Forms.DataGridView();
+            this.TSMI_Tout = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Fournisseur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Inventaire)).BeginInit();
             this.MS_Menu.SuspendLayout();
@@ -142,8 +140,8 @@
             // 
             this.MS_Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSMI_Fichier,
-            this.TSMI_Rapports,
-            this.TSMI_Lister});
+            this.TSMI_Partie3,
+            this.TSMI_Partie4});
             this.MS_Menu.Location = new System.Drawing.Point(0, 0);
             this.MS_Menu.Name = "MS_Menu";
             this.MS_Menu.Size = new System.Drawing.Size(763, 24);
@@ -187,61 +185,14 @@
             this.TSMI_Quitter.Text = "Quitter";
             this.TSMI_Quitter.Click += new System.EventHandler(this.TSMI_Quitter_Click);
             // 
-            // TSMI_Rapports
+            // TSMI_Partie3
             // 
-            this.TSMI_Rapports.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TSMI_MAIN_FOURN});
-            this.TSMI_Rapports.Name = "TSMI_Rapports";
-            this.TSMI_Rapports.Size = new System.Drawing.Size(66, 20);
-            this.TSMI_Rapports.Text = "Rapports";
-            // 
-            // TSMI_MAIN_FOURN
-            // 
-            this.TSMI_MAIN_FOURN.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TSMI_LIST_Fournisseurs,
-            this.TSMI_LIST_Publipostage,
-            this.TSMI_LIST_Produits,
-            this.TSMI_LIST_QteMin});
-            this.TSMI_MAIN_FOURN.Name = "TSMI_MAIN_FOURN";
-            this.TSMI_MAIN_FOURN.Size = new System.Drawing.Size(140, 22);
-            this.TSMI_MAIN_FOURN.Text = "Fournisseurs";
-            // 
-            // TSMI_LIST_Fournisseurs
-            // 
-            this.TSMI_LIST_Fournisseurs.Name = "TSMI_LIST_Fournisseurs";
-            this.TSMI_LIST_Fournisseurs.Size = new System.Drawing.Size(184, 22);
-            this.TSMI_LIST_Fournisseurs.Text = "Tous les fournisseurs";
-            this.TSMI_LIST_Fournisseurs.Click += new System.EventHandler(this.TSMI_LIST_Fournisseurs_Click);
-            // 
-            // TSMI_LIST_Publipostage
-            // 
-            this.TSMI_LIST_Publipostage.Name = "TSMI_LIST_Publipostage";
-            this.TSMI_LIST_Publipostage.Size = new System.Drawing.Size(184, 22);
-            this.TSMI_LIST_Publipostage.Text = "Pour publipostage";
-            this.TSMI_LIST_Publipostage.Click += new System.EventHandler(this.TSMI_LIST_Publipostage_Click);
-            // 
-            // TSMI_LIST_Produits
-            // 
-            this.TSMI_LIST_Produits.Name = "TSMI_LIST_Produits";
-            this.TSMI_LIST_Produits.Size = new System.Drawing.Size(184, 22);
-            this.TSMI_LIST_Produits.Text = "Avec produits";
-            this.TSMI_LIST_Produits.Click += new System.EventHandler(this.TSMI_LIST_Produits_Click);
-            // 
-            // TSMI_LIST_QteMin
-            // 
-            this.TSMI_LIST_QteMin.Name = "TSMI_LIST_QteMin";
-            this.TSMI_LIST_QteMin.Size = new System.Drawing.Size(184, 22);
-            this.TSMI_LIST_QteMin.Text = "Quantité minimale";
-            this.TSMI_LIST_QteMin.Click += new System.EventHandler(this.TSMI_LIST_QteMin_Click);
-            // 
-            // TSMI_Lister
-            // 
-            this.TSMI_Lister.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMI_Partie3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSMI_Clients,
             this.TSMI_Factures});
-            this.TSMI_Lister.Name = "TSMI_Lister";
-            this.TSMI_Lister.Size = new System.Drawing.Size(47, 20);
-            this.TSMI_Lister.Text = "Lister";
+            this.TSMI_Partie3.Name = "TSMI_Partie3";
+            this.TSMI_Partie3.Size = new System.Drawing.Size(97, 20);
+            this.TSMI_Partie3.Text = "Lister (Partie 3)";
             // 
             // TSMI_Clients
             // 
@@ -249,7 +200,7 @@
             this.TSMI_LIST_Clients,
             this.TSMI_LIST_CL_Factures});
             this.TSMI_Clients.Name = "TSMI_Clients";
-            this.TSMI_Clients.Size = new System.Drawing.Size(152, 22);
+            this.TSMI_Clients.Size = new System.Drawing.Size(118, 22);
             this.TSMI_Clients.Text = "Clients";
             // 
             // TSMI_LIST_Clients
@@ -271,7 +222,7 @@
             this.TSMI_Factures.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSMI_LIST_Factures});
             this.TSMI_Factures.Name = "TSMI_Factures";
-            this.TSMI_Factures.Size = new System.Drawing.Size(152, 22);
+            this.TSMI_Factures.Size = new System.Drawing.Size(118, 22);
             this.TSMI_Factures.Text = "Factures";
             // 
             // TSMI_LIST_Factures
@@ -280,6 +231,30 @@
             this.TSMI_LIST_Factures.Size = new System.Drawing.Size(172, 22);
             this.TSMI_LIST_Factures.Text = "Toutes les factures";
             this.TSMI_LIST_Factures.Click += new System.EventHandler(this.TSMI_LIST_Factures_Click);
+            // 
+            // TSMI_Partie4
+            // 
+            this.TSMI_Partie4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMI_Dangereux,
+            this.TSMI_NonDangereux,
+            this.TSMI_Tout});
+            this.TSMI_Partie4.Name = "TSMI_Partie4";
+            this.TSMI_Partie4.Size = new System.Drawing.Size(121, 20);
+            this.TSMI_Partie4.Text = "Inventaire (Partie 4)";
+            // 
+            // TSMI_Dangereux
+            // 
+            this.TSMI_Dangereux.Name = "TSMI_Dangereux";
+            this.TSMI_Dangereux.Size = new System.Drawing.Size(155, 22);
+            this.TSMI_Dangereux.Text = "Dangereux";
+            this.TSMI_Dangereux.Click += new System.EventHandler(this.TSMI_Dangereux_Click);
+            // 
+            // TSMI_NonDangereux
+            // 
+            this.TSMI_NonDangereux.Name = "TSMI_NonDangereux";
+            this.TSMI_NonDangereux.Size = new System.Drawing.Size(155, 22);
+            this.TSMI_NonDangereux.Text = "Non dangereux";
+            this.TSMI_NonDangereux.Click += new System.EventHandler(this.TSMI_NonDangereux_Click);
             // 
             // TB_RECHERCHE_Fournisseur
             // 
@@ -383,6 +358,13 @@
             this.DGV_QTE_Minimum.Size = new System.Drawing.Size(726, 112);
             this.DGV_QTE_Minimum.TabIndex = 12;
             // 
+            // TSMI_Tout
+            // 
+            this.TSMI_Tout.Name = "TSMI_Tout";
+            this.TSMI_Tout.Size = new System.Drawing.Size(155, 22);
+            this.TSMI_Tout.Text = "Tout";
+            this.TSMI_Tout.Click += new System.EventHandler(this.TSMI_Tout_Click);
+            // 
             // FORM_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -435,18 +417,16 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.DataGridView DGV_QTE_Minimum;
         private System.Windows.Forms.ToolStripMenuItem TSMI_Connexion;
-        private System.Windows.Forms.ToolStripMenuItem TSMI_Rapports;
-        private System.Windows.Forms.ToolStripMenuItem TSMI_MAIN_FOURN;
-        private System.Windows.Forms.ToolStripMenuItem TSMI_LIST_Fournisseurs;
-        private System.Windows.Forms.ToolStripMenuItem TSMI_LIST_Publipostage;
-        private System.Windows.Forms.ToolStripMenuItem TSMI_LIST_Produits;
-        private System.Windows.Forms.ToolStripMenuItem TSMI_LIST_QteMin;
-        private System.Windows.Forms.ToolStripMenuItem TSMI_Lister;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_Partie3;
         private System.Windows.Forms.ToolStripMenuItem TSMI_Clients;
         private System.Windows.Forms.ToolStripMenuItem TSMI_LIST_Clients;
         private System.Windows.Forms.ToolStripMenuItem TSMI_LIST_CL_Factures;
         private System.Windows.Forms.ToolStripMenuItem TSMI_Factures;
         private System.Windows.Forms.ToolStripMenuItem TSMI_LIST_Factures;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_Partie4;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_Dangereux;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_NonDangereux;
+        private System.Windows.Forms.ToolStripMenuItem TSMI_Tout;
     }
 }
 
